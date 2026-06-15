@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Produk - Halle Salatiga</title>
+    
+    <!-- Meta Descriptions for SEO (Dynamic fallback) -->
+    <meta name="description" content="Detail spesifikasi, ukuran, warna, dan harga produk fashion premium di Halle Salatiga. Dapatkan penawaran terbaik dan garansi penukaran ukuran.">
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- FontAwesome for Premium Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5JZSSTBJ1B"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-5JZSSTBJ1B');
+    </script>
+</head>
+<body>
+
+    <!-- NAV BAR -->
+    <nav>
+        <div class="container">
+            <div class="logo-wrapper">
+                <a href="index.html">
+                    <img src="image/Halle-Logo.png" class="logo" alt="Halle Salatiga Logo">
+                </a>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="catalog.html">Katalog Produk</a></li>
+                <li><a href="index.html#location">Lokasi Toko</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <form class="nav-search-form">
+                    <i class="fa fa-search nav-search-icon"></i>
+                    <input type="text" placeholder="Cari fashion..." class="nav-search-input" aria-label="Search">
+                </form>
+                
+                <button class="nav-icon-btn cart-toggle" aria-label="Open shopping cart">
+                    <i class="fa fa-shopping-bag"></i>
+                    <span class="cart-badge">0</span>
+                </button>
+                
+                <div class="mobile-nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="nav-overlay"></div>
+
+    <!-- MAIN PRODUCT DETAIL AREA -->
+    <main class="container section-spacing" style="margin-top: 80px;">
+        <!-- Breadcrumb -->
+        <div class="product-breadcrumb">
+            <a href="index.html">Home</a>
+            <span>/</span>
+            <a href="catalog.html">Katalog</a>
+            <span>/</span>
+            <a href="catalog.html" id="breadcrumb-category">Kategori</a>
+            <span>/</span>
+            <span id="breadcrumb-name" style="color: var(--text);">Nama Produk</span>
+        </div>
+        
+        <!-- Product Main Block -->
+        <div class="product-detail-layout" id="product-detail-container">
+            <!-- Left: Gallery -->
+            <div class="product-gallery">
+                <div class="gallery-thumbs" id="product-thumbs-container">
+                    <!-- Dynamically populated -->
+                </div>
+                <div class="gallery-main-frame">
+                    <img src="" id="main-product-image" class="gallery-main-img" alt="Product Image">
+                </div>
+            </div>
+            
+            <!-- Right: Options Panel -->
+            <div class="product-info-panel">
+                <span class="product-card-category" id="product-category-label">Kategori</span>
+                <h1 class="product-detail-title" id="product-title">Loading Product...</h1>
+                
+                <div class="product-detail-meta">
+                    <div class="product-card-rating-row">
+                        <span class="star-rating" id="product-rating-stars">★★★★★</span>
+                        <span class="product-card-reviews" id="product-reviews-count">(0 Reviews)</span>
+                    </div>
+                    <span>|</span>
+                    <span id="product-stock-badge" class="stock-indicator in-stock">Tersedia</span>
+                </div>
+                
+                <div class="product-detail-price-row">
+                    <span class="product-detail-price" id="product-price">Rp 0</span>
+                    <span class="product-detail-original-price" id="product-original-price"></span>
+                    <span class="product-detail-discount-pill" id="product-discount-badge" style="display: none;">-0%</span>
+                </div>
+                
+                <p class="product-detail-desc" id="product-description">
+                    Loading description...
+                </p>
+                
+                <!-- Color Options -->
+                <div class="product-option-group" id="color-options-group">
+                    <span class="option-label">Pilihan Warna: <strong id="selected-color-label">-</strong></span>
+                    <div class="color-swatches" id="color-swatches-container">
+                        <!-- Swatches rendered here -->
+                    </div>
+                </div>
+                
+                <!-- Size Options -->
+                <div class="product-option-group" id="size-options-group">
+                    <span class="option-label">Pilihan Ukuran: <strong id="selected-size-label">-</strong></span>
+                    <div class="size-chips" id="size-chips-container">
+                        <!-- Size buttons rendered here -->
+                    </div>
+                </div>
+                
+                <!-- Quantity & Actions -->
+                <div class="detail-purchase-panel">
+                    <div class="qty-selector">
+                        <button class="qty-btn" id="qty-minus-btn">-</button>
+                        <input type="number" id="purchase-qty" class="qty-input" value="1" min="1" max="10">
+                        <button class="qty-btn" id="qty-plus-btn">+</button>
+                    </div>
+                    
+                    <button class="btn btn-primary" id="add-to-cart-btn" style="flex-grow: 1;">
+                        <i class="fa fa-shopping-bag" style="margin-right: 8px;"></i> Tambah Ke Keranjang
+                    </button>
+                    
+                    <button class="btn btn-accent" id="buy-now-btn">
+                        Beli Sekarang
+                    </button>
+                </div>
+                
+                <!-- Specifications Bullets -->
+                <ul class="product-specs-list" id="product-specs-container">
+                    <!-- Specs rendered here -->
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Related Products Section -->
+        <section class="section-spacing" style="margin-top: 60px; border-top: 1px solid var(--border);">
+            <div class="section-header" style="text-align: left; margin-bottom: 36px;">
+                <h2 style="display: block; padding: 0; margin: 0;">Produk Terkait</h2>
+                <p style="margin: 8px 0 0 0; text-align: left;">Lengkapi gaya Anda dengan produk kurasi lainnya dari kategori serupa.</p>
+            </div>
+            
+            <div id="related-products-grid" class="products-grid">
+                <!-- Related products rendered here -->
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>Halle Salatiga</h3>
+                    <p>Toko fashion modern penyedia produk berkualitas seperti celana, sepatu, tas, dan aksesori. Gaya kasual hingga formal, nyaman dipakai untuk menemani keseharian Anda.</p>
+                    <div class="footer-socials">
+                        <a href="#" class="social-btn" aria-label="Follow us on Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="social-btn" aria-label="Follow us on TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="#" class="social-btn" aria-label="Follow us on Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="social-btn" aria-label="Chat via WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Navigasi Cepat</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="catalog.html">Katalog Produk</a></li>
+                        <li><a href="catalog.html?category=celana">Koleksi Celana</a></li>
+                        <li><a href="catalog.html?category=sepatu">Koleksi Sepatu</a></li>
+                        <li><a href="index.html#location">Hubungi Kami</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Bantuan & Kebijakan</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Cara Pemesanan</a></li>
+                        <li><a href="#">Garansi Penukaran</a></li>
+                        <li><a href="#">Lacak Pengiriman</a></li>
+                        <li><a href="#">Syarat & Ketentuan</a></li>
+                        <li><a href="#">Kebijakan Privasi</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Newsletter</h4>
+                    <p style="color: #bbb; font-size: 13px; margin-bottom: 12px;">Dapatkan info promo spesial, produk baru, dan diskon menarik langsung di inbox Anda.</p>
+                    <form onsubmit="event.preventDefault(); alert('Terima kasih telah berlangganan newsletter kami!'); this.reset();">
+                        <input type="email" placeholder="Alamat Email Anda" required>
+                        <button type="submit" class="btn btn-accent btn-block">Berlangganan</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Halle Salatiga. All rights reserved. Made for premium fashion experience.</p>
+                <div class="footer-payments">
+                    <span>Metode Pembayaran Aman:</span>
+                    <div class="footer-payment-icons">
+                        <i class="fa-solid fa-money-bill-transfer" title="Transfer Bank"></i>
+                        <i class="fa-solid fa-wallet" title="E-Wallet"></i>
+                        <i class="fa-solid fa-truck-ramp-box" title="COD (Bayar di tempat)"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Core Scripts -->
+    <script src="js/products.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/main.js"></script>
+    
+    <!-- Page Specific Script -->
+    <script>
+        // Page state variables
+        let currentProduct = null;
+        let selectedColor = '';
+        let selectedSize = '';
+        let selectedQty = 1;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Read URL param ?id=1
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = parseInt(urlParams.get('id'));
+
+            if (!productId || !window.PRODUCTS) {
+                window.location.href = 'catalog.html';
+                return;
+            }
+
+            // Lookup product
+            currentProduct = window.PRODUCTS.find(p => p.id === productId);
+
+            if (!currentProduct) {
+                alert('Produk tidak ditemukan!');
+                window.location.href = 'catalog.html';
+                return;
+            }
+
+            // Load values to DOM
+            renderProductDetails();
+            renderRelatedProducts();
+            setupPageListeners();
+        });
+
+        function renderProductDetails() {
+            // Set document title
+            document.title = `${currentProduct.name} - Halle Salatiga`;
+            
+            // Set breadcrumbs
+            const breadcrumbCategory = document.getElementById('breadcrumb-category');
+            const breadcrumbName = document.getElementById('breadcrumb-name');
+            breadcrumbCategory.textContent = currentProduct.category.toUpperCase();
+            breadcrumbCategory.href = `catalog.html?category=${currentProduct.category}`;
+            breadcrumbName.textContent = currentProduct.name;
+
+            // Details labels
+            document.getElementById('product-category-label').textContent = currentProduct.category;
+            document.getElementById('product-title').textContent = currentProduct.name;
+            document.getElementById('product-description').textContent = currentProduct.description;
+            
+            // Rating and reviews
+            const ratingStars = '★'.repeat(Math.round(currentProduct.rating)) + '☆'.repeat(5 - Math.round(currentProduct.rating));
+            document.getElementById('product-rating-stars').textContent = ratingStars;
+            document.getElementById('product-reviews-count').textContent = `(${currentProduct.reviewsCount} customer reviews)`;
+
+            // Pricing
+            document.getElementById('product-price').textContent = window.formatCurrency(currentProduct.price);
+            
+            const originalPriceEl = document.getElementById('product-original-price');
+            const discountBadge = document.getElementById('product-discount-badge');
+            if (currentProduct.originalPrice) {
+                originalPriceEl.textContent = window.formatCurrency(currentProduct.originalPrice);
+                originalPriceEl.style.display = 'inline';
+                
+                const discountPercentage = Math.round(((currentProduct.originalPrice - currentProduct.price) / currentProduct.originalPrice) * 100);
+                discountBadge.textContent = `-${discountPercentage}% OFF`;
+                discountBadge.style.display = 'inline-block';
+            } else {
+                originalPriceEl.style.display = 'none';
+                discountBadge.style.display = 'none';
+            }
+
+            // Stock Badge
+            const stockBadge = document.getElementById('product-stock-badge');
+            if (currentProduct.stock <= 0) {
+                stockBadge.textContent = 'Stok Habis';
+                stockBadge.className = 'stock-indicator low-stock';
+                document.getElementById('add-to-cart-btn').disabled = true;
+                document.getElementById('buy-now-btn').disabled = true;
+            } else if (currentProduct.stock <= 5) {
+                stockBadge.textContent = `Hanya sisa ${currentProduct.stock} barang!`;
+                stockBadge.className = 'stock-indicator low-stock';
+            } else {
+                stockBadge.textContent = 'Stok Tersedia';
+                stockBadge.className = 'stock-indicator in-stock';
+            }
+
+            // Set quantity limits
+            const qtyInput = document.getElementById('purchase-qty');
+            qtyInput.max = currentProduct.stock;
+            qtyInput.value = 1;
+
+            // Gallery Rendering
+            const thumbsContainer = document.getElementById('product-thumbs-container');
+            const mainImg = document.getElementById('main-product-image');
+            
+            mainImg.src = currentProduct.images[0];
+            mainImg.alt = currentProduct.name;
+            
+            let thumbsHtml = '';
+            currentProduct.images.forEach((imgUrl, idx) => {
+                thumbsHtml += `
+                    <div class="gallery-thumb-item ${idx === 0 ? 'active' : ''}" onclick="changeMainImage('${imgUrl}', this)">
+                        <img src="${imgUrl}" alt="${currentProduct.name} - ${idx + 1}">
+                    </div>
+                `;
+            });
+            thumbsContainer.innerHTML = thumbsHtml;
+
+            // Color Swatches
+            const colorContainer = document.getElementById('color-swatches-container');
+            const colorGroup = document.getElementById('color-options-group');
+            if (currentProduct.colors && currentProduct.colors.length > 0) {
+                colorGroup.style.display = 'block';
+                let colorsHtml = '';
+                currentProduct.colors.forEach((col, idx) => {
+                    colorsHtml += `
+                        <button class="color-swatch-btn ${idx === 0 ? 'active' : ''}" 
+                                style="background-color: ${col.hex};" 
+                                title="${col.name}"
+                                onclick="selectColor('${col.name}', this)">
+                        </button>
+                    `;
+                });
+                colorContainer.innerHTML = colorsHtml;
+                // Set default color
+                selectColor(currentProduct.colors[0].name);
+            } else {
+                colorGroup.style.display = 'none';
+                selectedColor = '';
+            }
+
+            // Size Chips
+            const sizeContainer = document.getElementById('size-chips-container');
+            const sizeGroup = document.getElementById('size-options-group');
+            if (currentProduct.sizes && currentProduct.sizes.length > 0) {
+                sizeGroup.style.display = 'block';
+                let sizesHtml = '';
+                currentProduct.sizes.forEach((sz, idx) => {
+                    sizesHtml += `
+                        <button class="size-chip-btn ${idx === 0 ? 'active' : ''}" onclick="selectSize('${sz}', this)">
+                            ${sz}
+                        </button>
+                    `;
+                });
+                sizeContainer.innerHTML = sizesHtml;
+                // Set default size
+                selectSize(currentProduct.sizes[0]);
+            } else {
+                sizeGroup.style.display = 'none';
+                selectedSize = '';
+            }
+
+            // Specs Bullet list
+            const specsContainer = document.getElementById('product-specs-container');
+            let specsHtml = '';
+            currentProduct.details.forEach(spec => {
+                specsHtml += `<li>${spec}</li>`;
+            });
+            specsContainer.innerHTML = specsHtml;
+        }
+
+        // Gallery action helper
+        window.changeMainImage = function(url, thumbEl) {
+            document.getElementById('main-product-image').src = url;
+            document.querySelectorAll('.gallery-thumb-item').forEach(el => el.classList.remove('active'));
+            thumbEl.classList.add('active');
+        };
+
+        // Option select helpers
+        window.selectColor = function(colorName, btnEl) {
+            selectedColor = colorName;
+            document.getElementById('selected-color-label').textContent = colorName;
+            if (btnEl) {
+                document.querySelectorAll('.color-swatch-btn').forEach(el => el.classList.remove('active'));
+                btnEl.classList.add('active');
+            }
+        };
+
+        window.selectSize = function(sizeVal, btnEl) {
+            selectedSize = sizeVal;
+            document.getElementById('selected-size-label').textContent = sizeVal;
+            if (btnEl) {
+                document.querySelectorAll('.size-chip-btn').forEach(el => el.classList.remove('active'));
+                btnEl.classList.add('active');
+            }
+        };
+
+        function setupPageListeners() {
+            const qtyInput = document.getElementById('purchase-qty');
+            const minusBtn = document.getElementById('qty-minus-btn');
+            const plusBtn = document.getElementById('qty-plus-btn');
+
+            minusBtn.addEventListener('click', () => {
+                let val = parseInt(qtyInput.value);
+                if (val > 1) {
+                    qtyInput.value = val - 1;
+                    selectedQty = val - 1;
+                }
+            });
+
+            plusBtn.addEventListener('click', () => {
+                let val = parseInt(qtyInput.value);
+                if (val < currentProduct.stock) {
+                    qtyInput.value = val + 1;
+                    selectedQty = val + 1;
+                }
+            });
+
+            qtyInput.addEventListener('change', (e) => {
+                let val = parseInt(e.target.value);
+                if (isNaN(val) || val < 1) {
+                    qtyInput.value = 1;
+                    selectedQty = 1;
+                } else if (val > currentProduct.stock) {
+                    qtyInput.value = currentProduct.stock;
+                    selectedQty = currentProduct.stock;
+                    alert(`Stok terbatas! Hanya tersedia ${currentProduct.stock} barang.`);
+                } else {
+                    selectedQty = val;
+                }
+            });
+
+            // Add to Cart Button Click
+            const cartBtn = document.getElementById('add-to-cart-btn');
+            if (cartBtn) {
+                cartBtn.addEventListener('click', () => {
+                    if (window.Cart) {
+                        window.Cart.addToCart(currentProduct.id, selectedQty, selectedColor, selectedSize);
+                        window.openCartDrawer();
+                    }
+                });
+            }
+
+            // Buy Now Button Click
+            const buyNowBtn = document.getElementById('buy-now-btn');
+            if (buyNowBtn) {
+                buyNowBtn.addEventListener('click', () => {
+                    if (window.Cart) {
+                        // Clear cart and add this single item, then redirect to checkout
+                        // (Alternative: Add to cart and redirect, keeping existing cart items. This is better so users don't lose cart!)
+                        window.Cart.addToCart(currentProduct.id, selectedQty, selectedColor, selectedSize);
+                        window.location.href = 'checkout.html';
+                    }
+                });
+            }
+        }
+
+        // Render Related Products Grid
+        function renderRelatedProducts() {
+            const grid = document.getElementById('related-products-grid');
+            if (!grid || !window.PRODUCTS) return;
+
+            // Filter products of same category, excluding current product
+            const related = window.PRODUCTS
+                .filter(p => p.category === currentProduct.category && p.id !== currentProduct.id)
+                .slice(0, 4);
+
+            if (related.length === 0) {
+                grid.parentElement.style.display = 'none'; // Hide section if none
+                return;
+            }
+
+            let html = '';
+            related.forEach(product => {
+                const formattedPrice = window.formatCurrency(product.price);
+                const originalPriceHtml = product.originalPrice 
+                    ? `<span class="product-card-original-price">${window.formatCurrency(product.originalPrice)}</span>` 
+                    : '';
+                const discountPercentage = product.originalPrice 
+                    ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100) 
+                    : 0;
+                
+                const saleBadge = discountPercentage > 0 
+                    ? `<span class="badge-sale">Sale -${discountPercentage}%</span>` 
+                    : '';
+                
+                const newBadge = product.isNew && discountPercentage === 0
+                    ? `<span class="badge-new">New</span>` 
+                    : '';
+
+                const ratingStars = '★'.repeat(Math.round(product.rating)) + '☆'.repeat(5 - Math.round(product.rating));
+                const secondaryImg = product.images[1] || product.images[0];
+
+                html += `
+                    <div class="product-card">
+                        <div class="product-card-img-wrapper">
+                            ${saleBadge || newBadge}
+                            <a href="product.html?id=${product.id}">
+                                <img src="${product.images[0]}" alt="${product.name}" class="product-card-img" loading="lazy">
+                                <img src="${secondaryImg}" alt="${product.name}" class="product-card-img-secondary" loading="lazy">
+                            </a>
+                            <div class="product-card-actions">
+                                <a href="product.html?id=${product.id}" class="btn btn-secondary">Detail</a>
+                                <button onclick="quickAddCart(${product.id})" class="btn btn-primary">Beli</button>
+                            </div>
+                        </div>
+                        <div class="product-card-info">
+                            <span class="product-card-category">${product.category}</span>
+                            <h3 class="product-card-title">
+                                <a href="product.html?id=${product.id}">${product.name}</a>
+                            </h3>
+                            <div class="product-card-rating-row">
+                                <span class="star-rating">${ratingStars}</span>
+                                <span class="product-card-reviews">(${product.reviewsCount})</span>
+                            </div>
+                            <div class="product-card-price-row">
+                                <span class="product-card-price">${formattedPrice}</span>
+                                ${originalPriceHtml}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            grid.innerHTML = html;
+        }
+
+        // Quick add helper for related products
+        function quickAddCart(productId) {
+            const product = window.PRODUCTS.find(p => p.id === productId);
+            if (!product) return;
+            
+            const defaultColor = product.colors && product.colors.length > 0 ? product.colors[0].name : '';
+            const defaultSize = product.sizes && product.sizes.length > 0 ? product.sizes[0] : '';
+            
+            if (window.Cart) {
+                window.Cart.addToCart(productId, 1, defaultColor, defaultSize);
+                window.openCartDrawer();
+            }
+        }
+    </script>
+</body>
+</html>

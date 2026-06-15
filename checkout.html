@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Halle Salatiga</title>
+    
+    <!-- Meta Descriptions for SEO -->
+    <meta name="description" content="Selesaikan pemesanan fashion premium Anda di Halle Salatiga. Lengkapi alamat pengiriman, pilih kurir terpercaya, dan bayar dengan COD atau transfer bank.">
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- FontAwesome for Premium Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- NAV BAR -->
+    <nav>
+        <div class="container">
+            <div class="logo-wrapper">
+                <a href="index.html">
+                    <img src="image/Halle-Logo.png" class="logo" alt="Halle Salatiga Logo">
+                </a>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="catalog.html">Katalog Produk</a></li>
+                <li><a href="index.html#location">Lokasi Toko</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <form class="nav-search-form">
+                    <i class="fa fa-search nav-search-icon"></i>
+                    <input type="text" placeholder="Cari fashion..." class="nav-search-input" aria-label="Search">
+                </form>
+                
+                <button class="nav-icon-btn cart-toggle" aria-label="Open shopping cart">
+                    <i class="fa fa-shopping-bag"></i>
+                    <span class="cart-badge">0</span>
+                </button>
+                
+                <div class="mobile-nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="nav-overlay"></div>
+
+    <!-- MAIN CHECKOUT CONTENT -->
+    <main class="container section-spacing" style="margin-top: 80px;">
+        <div class="section-header" style="margin-bottom: 36px; text-align: left;">
+            <h2 style="display: block; padding: 0; margin: 0;">Checkout Pemesanan</h2>
+            <p style="margin: 8px 0 0 0; text-align: left;">Mohon lengkapi formulir di bawah ini untuk mengirim pesanan langsung ke WhatsApp admin kami.</p>
+        </div>
+        
+        <!-- Empty State Container -->
+        <div id="checkout-empty-view" style="display: none; text-align: center; padding: 80px 24px; max-width: 600px; margin: 0 auto; background-color: var(--bg-secondary); border-radius: 8px; border: 1px solid var(--border);">
+            <div style="font-size: 64px; margin-bottom: 20px;">🛒</div>
+            <h3>Keranjang Anda Kosong</h3>
+            <p style="margin: 8px 0 24px 0; color: var(--text-muted);">Anda belum menambahkan produk ke keranjang belanja Anda.</p>
+            <a href="catalog.html" class="btn btn-primary">Mulai Belanja Sekarang</a>
+        </div>
+        
+        <!-- Checkout Content Grid -->
+        <div class="checkout-layout" id="checkout-content-view">
+            <!-- Left: Shipping & Checkout Form -->
+            <form id="checkout-form" onsubmit="handleCheckoutSubmit(event)">
+                <!-- Section 1: Customer Details -->
+                <div class="checkout-section-box">
+                    <h3>1. Informasi Pengiriman</h3>
+                    
+                    <div class="form-group">
+                        <label for="shipping-name">Nama Penerima <span style="color: var(--warning);">*</span></label>
+                        <input type="text" id="shipping-name" placeholder="Nama Lengkap Anda" required>
+                    </div>
+                    
+                    <div class="form-grid-2">
+                        <div class="form-group">
+                            <label for="shipping-whatsapp">No. WhatsApp <span style="color: var(--warning);">*</span></label>
+                            <input type="tel" id="shipping-whatsapp" placeholder="Contoh: 081234567890" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="shipping-city">Kota / Kecamatan <span style="color: var(--warning);">*</span></label>
+                            <input type="text" id="shipping-city" placeholder="Contoh: Sidorejo, Salatiga" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="shipping-address">Alamat Lengkap <span style="color: var(--warning);">*</span></label>
+                        <textarea id="shipping-address" rows="3" placeholder="Nama jalan, nomor rumah, RT/RW, kelurahan" required></textarea>
+                    </div>
+                </div>
+                
+                <!-- Section 2: Courier Options -->
+                <div class="checkout-section-box">
+                    <h3>2. Jasa Ekspedisi (Kurir)</h3>
+                    
+                    <div class="option-select-grid">
+                        <div class="option-select-card">
+                            <input type="radio" name="shipping-courier" id="courier-jnt" value="J&T" checked onchange="updateShippingCost(15000)">
+                            <label class="option-select-label" for="courier-jnt">
+                                <span class="option-title">J&T Express</span>
+                                <span class="option-subtitle">Estimasi 2-3 Hari • Rp 15.000</span>
+                            </label>
+                        </div>
+                        
+                        <div class="option-select-card">
+                            <input type="radio" name="shipping-courier" id="courier-jne" value="JNE" onchange="updateShippingCost(12000)">
+                            <label class="option-select-label" for="courier-jne">
+                                <span class="option-title">JNE Regular</span>
+                                <span class="option-subtitle">Estimasi 2-4 Hari • Rp 12.000</span>
+                            </label>
+                        </div>
+                        
+                        <div class="option-select-card">
+                            <input type="radio" name="shipping-courier" id="courier-sicepat" value="SiCepat" onchange="updateShippingCost(10000)">
+                            <label class="option-select-label" for="courier-sicepat">
+                                <span class="option-title">SiCepat GOKIL</span>
+                                <span class="option-subtitle">Estimasi 3-5 Hari • Rp 10.000</span>
+                            </label>
+                        </div>
+                        
+                        <div class="option-select-card">
+                            <input type="radio" name="shipping-courier" id="courier-pos" value="POS Indonesia" onchange="updateShippingCost(14000)">
+                            <label class="option-select-label" for="courier-pos">
+                                <span class="option-title">POS Kilat Khusus</span>
+                                <span class="option-subtitle">Estimasi 3-6 Hari • Rp 14.000</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Section 3: Payment Methods -->
+                <div class="checkout-section-box">
+                    <h3>3. Metode Pembayaran</h3>
+                    
+                    <div class="option-select-grid">
+                        <div class="option-select-card">
+                            <input type="radio" name="payment-method" id="payment-cod" value="COD (Bayar di Tempat)" checked onchange="updateCODHandlingFee(5000)">
+                            <label class="option-select-label" for="payment-cod">
+                                <span class="option-title"><i class="fa-solid fa-truck-ramp-box" style="margin-right: 6px;"></i> COD</span>
+                                <span class="option-subtitle">Bayar saat paket sampai • Biaya Admin Rp 5.000</span>
+                            </label>
+                        </div>
+                        
+                        <div class="option-select-card">
+                            <input type="radio" name="payment-method" id="payment-transfer" value="Transfer Bank (BCA/Mandiri)" onchange="updateCODHandlingFee(0)">
+                            <label class="option-select-label" for="payment-transfer">
+                                <span class="option-title"><i class="fa-solid fa-money-bill-transfer" style="margin-right: 6px;"></i> Transfer Bank</span>
+                                <span class="option-subtitle">Konfirmasi instan • Tanpa biaya tambahan</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            
+            <!-- Right: Order Summary -->
+            <aside class="checkout-sidebar">
+                <div class="checkout-section-box" style="background-color: var(--bg-secondary); border: 1px solid var(--border-dark);">
+                    <h3 style="border-color: var(--border-dark);">Ringkasan Belanja</h3>
+                    
+                    <!-- Checkout Items List -->
+                    <div id="checkout-items-container" class="checkout-items-list">
+                        <!-- Dynamically populated -->
+                    </div>
+                    
+                    <!-- Checkout Pricing Totals -->
+                    <div class="checkout-totals">
+                        <div class="checkout-total-row">
+                            <span>Subtotal Barang:</span>
+                            <span id="checkout-subtotal">Rp 0</span>
+                        </div>
+                        <div class="checkout-total-row">
+                            <span>Ongkos Kirim:</span>
+                            <span id="checkout-shipping">Rp 15.000</span>
+                        </div>
+                        <div class="checkout-total-row">
+                            <span>Biaya Layanan/COD:</span>
+                            <span id="checkout-handling">Rp 5.000</span>
+                        </div>
+                        <div class="checkout-total-row grand-total">
+                            <span>Total Pembayaran:</span>
+                            <span id="checkout-grandtotal" style="color: var(--primary);">Rp 0</span>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" form="checkout-form" class="btn btn-primary btn-block" style="margin-top: 24px; height: 50px;">
+                        <i class="fa-brands fa-whatsapp" style="margin-right: 8px; font-size: 18px;"></i> Kirim Pesanan Ke WhatsApp
+                    </button>
+                    
+                    <p style="font-size: 11px; color: var(--text-light); text-align: center; margin-top: 12px; line-height: 1.4;">
+                        *Pesanan Anda akan dikirim ke WhatsApp resmi admin Halle Salatiga untuk verifikasi stok dan penyelesaian pembayaran.
+                    </p>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>Halle Salatiga</h3>
+                    <p>Toko fashion modern penyedia produk berkualitas seperti celana, sepatu, tas, dan aksesori. Gaya kasual hingga formal, nyaman dipakai untuk menemani keseharian Anda.</p>
+                    <div class="footer-socials">
+                        <a href="#" class="social-btn" aria-label="Follow us on Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="social-btn" aria-label="Follow us on TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="#" class="social-btn" aria-label="Follow us on Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="social-btn" aria-label="Chat via WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Navigasi Cepat</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="catalog.html">Katalog Produk</a></li>
+                        <li><a href="catalog.html?category=celana">Koleksi Celana</a></li>
+                        <li><a href="catalog.html?category=sepatu">Koleksi Sepatu</a></li>
+                        <li><a href="index.html#location">Hubungi Kami</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Bantuan & Kebijakan</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Cara Pemesanan</a></li>
+                        <li><a href="#">Garansi Penukaran</a></li>
+                        <li><a href="#">Lacak Pengiriman</a></li>
+                        <li><a href="#">Syarat & Ketentuan</a></li>
+                        <li><a href="#">Kebijakan Privasi</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Newsletter</h4>
+                    <p style="color: #bbb; font-size: 13px; margin-bottom: 12px;">Dapatkan info promo spesial, produk baru, dan diskon menarik langsung di inbox Anda.</p>
+                    <form onsubmit="event.preventDefault(); alert('Terima kasih telah berlangganan newsletter kami!'); this.reset();">
+                        <input type="email" placeholder="Alamat Email Anda" required>
+                        <button type="submit" class="btn btn-accent btn-block">Berlangganan</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Halle Salatiga. All rights reserved. Made for premium fashion experience.</p>
+                <div class="footer-payments">
+                    <span>Metode Pembayaran Aman:</span>
+                    <div class="footer-payment-icons">
+                        <i class="fa-solid fa-money-bill-transfer" title="Transfer Bank"></i>
+                        <i class="fa-solid fa-wallet" title="E-Wallet"></i>
+                        <i class="fa-solid fa-truck-ramp-box" title="COD (Bayar di tempat)"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Core Scripts -->
+    <script src="js/products.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/main.js"></script>
+    
+    <!-- Page Specific Script -->
+    <script>
+        // Store phone number of the shop
+        const SHOP_WHATSAPP_NUMBER = '6281234567890'; // official shop number format: countrycode+number
+
+        // Pricing variables
+        let cartSubtotal = 0;
+        let shippingCost = 15000; // default J&T cost
+        let handlingFee = 5000;   // default COD fee
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Load and render order items
+            renderCheckoutSummary();
+        });
+
+        function renderCheckoutSummary() {
+            const emptyView = document.getElementById('checkout-empty-view');
+            const contentView = document.getElementById('checkout-content-view');
+            const itemsContainer = document.getElementById('checkout-items-container');
+            
+            if (!emptyView || !contentView || !itemsContainer) return;
+
+            const cart = window.Cart ? window.Cart.getCart() : [];
+            
+            if (cart.length === 0) {
+                contentView.style.display = 'none';
+                emptyView.style.display = 'block';
+                return;
+            }
+
+            contentView.style.display = 'grid';
+            emptyView.style.display = 'none';
+
+            cartSubtotal = window.Cart.getCartTotal();
+            
+            let html = '';
+            cart.forEach(item => {
+                const itemTotalPrice = item.price * item.quantity;
+                const formattedPrice = window.formatCurrency(itemTotalPrice);
+                const specs = [
+                    item.color ? `Warna: ${item.color}` : '',
+                    item.size ? `Size: ${item.size}` : '',
+                    `Jumlah: ${item.quantity}`
+                ].filter(Boolean).join(', ');
+
+                html += `
+                    <div class="checkout-item-row">
+                        <img src="${item.image}" alt="${item.name}" class="checkout-item-img">
+                        <div class="checkout-item-info">
+                            <h4 class="checkout-item-name">${item.name}</h4>
+                            <span class="checkout-item-specs">${specs}</span>
+                        </div>
+                        <span class="checkout-item-price">${formattedPrice}</span>
+                    </div>
+                `;
+            });
+
+            itemsContainer.innerHTML = html;
+            
+            // Render prices
+            document.getElementById('checkout-subtotal').textContent = window.formatCurrency(cartSubtotal);
+            updateTotalsDisplay();
+        }
+
+        function updateShippingCost(cost) {
+            shippingCost = cost;
+            document.getElementById('checkout-shipping').textContent = window.formatCurrency(cost);
+            updateTotalsDisplay();
+        }
+
+        function updateCODHandlingFee(fee) {
+            handlingFee = fee;
+            document.getElementById('checkout-handling').textContent = window.formatCurrency(fee);
+            updateTotalsDisplay();
+        }
+
+        function updateTotalsDisplay() {
+            const grandTotal = cartSubtotal + shippingCost + handlingFee;
+            document.getElementById('checkout-grandtotal').textContent = window.formatCurrency(grandTotal);
+        }
+
+        // WhatsApp Checkout generation
+        window.handleCheckoutSubmit = function(event) {
+            event.preventDefault();
+
+            // Validate form
+            const name = document.getElementById('shipping-name').value.trim();
+            const phone = document.getElementById('shipping-whatsapp').value.trim();
+            const city = document.getElementById('shipping-city').value.trim();
+            const address = document.getElementById('shipping-address').value.trim();
+            
+            const selectedCourierEl = document.querySelector('input[name="shipping-courier"]:checked');
+            const courier = selectedCourierEl ? selectedCourierEl.value : 'J&T';
+
+            const selectedPaymentEl = document.querySelector('input[name="payment-method"]:checked');
+            const payment = selectedPaymentEl ? selectedPaymentEl.value : 'COD';
+
+            const cart = window.Cart ? window.Cart.getCart() : [];
+
+            if (cart.length === 0) {
+                alert('Keranjang belanja Anda kosong!');
+                return;
+            }
+
+            // Build beautifully formatted WhatsApp text message
+            let message = `*HALO HALLE SALATIGA, SAYA INGIN MEMESAN FASHION:*\n`;
+            message += `===============================\n\n`;
+            
+            cart.forEach((item, idx) => {
+                const itemTotalPrice = item.price * item.quantity;
+                const formattedPrice = window.formatCurrency(itemTotalPrice);
+                const colorStr = item.color ? ` - ${item.color}` : '';
+                const sizeStr = item.size ? ` (Size: ${item.size})` : '';
+                
+                message += `${idx + 1}. *${item.name}*\n`;
+                message += `   Qty: ${item.quantity} x ${window.formatCurrency(item.price)} = ${formattedPrice}\n`;
+                message += `   Varian:${colorStr}${sizeStr}\n\n`;
+            });
+
+            message += `===============================\n`;
+            message += `*Subtotal:* ${window.formatCurrency(cartSubtotal)}\n`;
+            message += `*Ongkos Kirim (${courier}):* ${window.formatCurrency(shippingCost)}\n`;
+            message += `*Biaya Layanan/COD:* ${window.formatCurrency(handlingFee)}\n`;
+            message += `*TOTAL PEMBAYARAN:* ${window.formatCurrency(cartSubtotal + shippingCost + handlingFee)}\n\n`;
+            
+            message += `*DETAIL PENGIRIMAN:*\n`;
+            message += `- *Nama Penerima:* ${name}\n`;
+            message += `- *No. WhatsApp:* ${phone}\n`;
+            message += `- *Kota / Kecamatan:* ${city}\n`;
+            message += `- *Alamat Lengkap:* ${address}\n\n`;
+            
+            message += `*INFO LAIN:*\n`;
+            message += `- *Pilihan Kurir:* ${courier}\n`;
+            message += `- *Metode Pembayaran:* ${payment}\n\n`;
+            message += `Terima kasih! Mohon informasikan ketersediaan stok & nomor rekening tujuan jika menggunakan transfer bank.`;
+
+            // Encode message for URL parameters
+            const encodedText = encodeURIComponent(message);
+            const waUrl = `https://wa.me/${SHOP_WHATSAPP_NUMBER}?text=${encodedText}`;
+
+            // Reset shopping cart to clear it out
+            if (window.Cart) {
+                window.Cart.clearCart();
+            }
+
+            // Open WhatsApp in a new tab/window
+            window.open(waUrl, '_blank');
+
+            // Redirect home
+            window.location.href = 'index.html';
+        };
+    </script>
+</body>
+</html>

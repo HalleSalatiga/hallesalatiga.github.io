@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katalog Produk - Halle Salatiga</title>
+    
+    <!-- Meta Descriptions for SEO -->
+    <meta name="description" content="Jelajahi katalog lengkap pakaian, celana, sepatu, tas, dan aksesoris fashion premium di Halle Salatiga. Cari gaya terbaik Anda dengan penawaran harga terbaik.">
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- FontAwesome for Premium Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5JZSSTBJ1B"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-5JZSSTBJ1B');
+    </script>
+</head>
+<body>
+
+    <!-- NAV BAR -->
+    <nav>
+        <div class="container">
+            <div class="logo-wrapper">
+                <a href="index.html">
+                    <img src="image/Halle-Logo.png" class="logo" alt="Halle Salatiga Logo">
+                </a>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="catalog.html" class="active">Katalog Produk</a></li>
+                <li><a href="index.html#location">Lokasi Toko</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <form class="nav-search-form">
+                    <i class="fa fa-search nav-search-icon"></i>
+                    <input type="text" placeholder="Cari fashion..." class="nav-search-input" aria-label="Search">
+                </form>
+                
+                <button class="nav-icon-btn cart-toggle" aria-label="Open shopping cart">
+                    <i class="fa fa-shopping-bag"></i>
+                    <span class="cart-badge">0</span>
+                </button>
+                
+                <div class="mobile-nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="nav-overlay"></div>
+
+    <!-- MAIN CATALOG CONTAINER -->
+    <main class="container section-spacing" style="margin-top: 80px;">
+        <div class="section-header" style="margin-bottom: 24px; text-align: left;">
+            <h2 style="display: block; padding: 0; margin: 0;">Katalog Fashion</h2>
+            <p style="margin: 8px 0 0 0; text-align: left;">Temukan produk fashion pilihan berkualitas dari ujung kepala hingga ujung kaki.</p>
+        </div>
+        
+        <div class="catalog-layout">
+            <!-- FILTER SIDEBAR -->
+            <aside class="catalog-sidebar">
+                <!-- Search Filter -->
+                <div class="filter-group">
+                    <h3>Pencarian</h3>
+                    <div style="position: relative; display: flex; align-items: center;">
+                        <input type="text" id="catalog-search-input" placeholder="Cari di katalog..." style="width: 100%; padding: 10px 12px 10px 36px; border: 1px solid var(--border-dark); border-radius: 4px; font-size: 14px; background-color: var(--bg);">
+                        <i class="fa fa-search" style="position: absolute; left: 12px; color: var(--text-light); font-size: 13px; pointer-events: none;"></i>
+                    </div>
+                </div>
+
+                <!-- Category Filter -->
+                <div class="filter-group">
+                    <h3>Kategori</h3>
+                    <ul class="filter-category-list">
+                        <li class="filter-category-item active" data-category="all">Semua Produk</li>
+                        <li class="filter-category-item" data-category="celana">Celana</li>
+                        <li class="filter-category-item" data-category="sepatu">Sepatu</li>
+                        <li class="filter-category-item" data-category="tas">Tas</li>
+                        <li class="filter-category-item" data-category="aksesori">Aksesori</li>
+                    </ul>
+                </div>
+                
+                <!-- Price Range Filter -->
+                <div class="filter-group">
+                    <h3>Filter Harga</h3>
+                    <div class="price-range-wrapper">
+                        <div class="price-range-inputs">
+                            <input type="text" id="price-min-display" value="Rp 0" readonly>
+                            <span>-</span>
+                            <input type="text" id="price-max-display" value="Rp 500.000" readonly>
+                        </div>
+                        <input type="range" class="price-range-slider" id="price-slider" min="0" max="500000" step="10000" value="500000">
+                    </div>
+                </div>
+                
+                <!-- Trust Badge Widget -->
+                <div class="filter-group" style="margin-top: 40px; border: 1px solid var(--border); padding: 16px; border-radius: 4px; background-color: var(--bg-secondary);">
+                    <h4 style="font-size: 13px; font-weight: 700; text-transform: uppercase; margin-bottom: 8px;"><i class="fa-solid fa-face-smile" style="color: var(--accent); margin-right: 6px;"></i> Belanja Aman</h4>
+                    <p style="font-size: 12px; color: var(--text-muted); line-height: 1.4;">Halle Salatiga melayani pembayaran COD untuk wilayah Indonesia dan garansi tukar ukuran gratis.</p>
+                </div>
+            </aside>
+            
+            <!-- CATALOG PRODUCTS AREA -->
+            <section class="catalog-content">
+                <!-- Controls Row -->
+                <div class="catalog-controls">
+                    <div class="catalog-search-summary" id="catalog-summary-text">
+                        Menampilkan semua produk
+                    </div>
+                    
+                    <div style="display: flex; gap: 12px; align-items: center;">
+                        <label for="catalog-sort" style="font-size: 13px; color: var(--text-muted);">Urutkan:</label>
+                        <select id="catalog-sort" class="catalog-sort-select">
+                            <option value="featured">Terpopuler</option>
+                            <option value="newest">Terbaru</option>
+                            <option value="price-asc">Harga: Rendah ke Tinggi</option>
+                            <option value="price-desc">Harga: Tinggi ke Rendah</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Products Grid -->
+                <div id="catalog-grid" class="products-grid">
+                    <!-- Dynamically populated by JS -->
+                </div>
+                
+                <!-- Empty State -->
+                <div id="catalog-empty-state" style="display: none; text-align: center; padding: 80px 24px; color: var(--text-muted);">
+                    <div style="font-size: 48px; margin-bottom: 16px;">🔍</div>
+                    <h3>Produk Tidak Ditemukan</h3>
+                    <p style="margin: 8px 0 24px 0;">Coba cari dengan kata kunci lain atau setel ulang filter pencarian Anda.</p>
+                    <button id="reset-filters-btn" class="btn btn-secondary">Setel Ulang Filter</button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>Halle Salatiga</h3>
+                    <p>Toko fashion modern penyedia produk berkualitas seperti celana, sepatu, tas, dan aksesori. Gaya kasual hingga formal, nyaman dipakai untuk menemani keseharian Anda.</p>
+                    <div class="footer-socials">
+                        <a href="#" class="social-btn" aria-label="Follow us on Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="social-btn" aria-label="Follow us on TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="#" class="social-btn" aria-label="Follow us on Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="social-btn" aria-label="Chat via WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Navigasi Cepat</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="catalog.html">Katalog Produk</a></li>
+                        <li><a href="catalog.html?category=celana">Koleksi Celana</a></li>
+                        <li><a href="catalog.html?category=sepatu">Koleksi Sepatu</a></li>
+                        <li><a href="index.html#location">Hubungi Kami</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Bantuan & Kebijakan</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Cara Pemesanan</a></li>
+                        <li><a href="#">Garansi Penukaran</a></li>
+                        <li><a href="#">Lacak Pengiriman</a></li>
+                        <li><a href="#">Syarat & Ketentuan</a></li>
+                        <li><a href="#">Kebijakan Privasi</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Newsletter</h4>
+                    <p style="color: #bbb; font-size: 13px; margin-bottom: 12px;">Dapatkan info promo spesial, produk baru, dan diskon menarik langsung di inbox Anda.</p>
+                    <form onsubmit="event.preventDefault(); alert('Terima kasih telah berlangganan newsletter kami!'); this.reset();">
+                        <input type="email" placeholder="Alamat Email Anda" required>
+                        <button type="submit" class="btn btn-accent btn-block">Berlangganan</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Halle Salatiga. All rights reserved. Made for premium fashion experience.</p>
+                <div class="footer-payments">
+                    <span>Metode Pembayaran Aman:</span>
+                    <div class="footer-payment-icons">
+                        <i class="fa-solid fa-money-bill-transfer" title="Transfer Bank"></i>
+                        <i class="fa-solid fa-wallet" title="E-Wallet"></i>
+                        <i class="fa-solid fa-truck-ramp-box" title="COD (Bayar di tempat)"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Core Scripts -->
+    <script src="js/products.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/main.js"></script>
+    
+    <!-- Page Specific Script -->
+    <script>
+        // Filters state
+        let currentFilters = {
+            category: 'all',
+            maxPrice: 500000,
+            searchQuery: '',
+            sortBy: 'featured'
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Read URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const categoryParam = urlParams.get('category');
+            const searchParam = urlParams.get('search');
+
+            if (categoryParam) {
+                currentFilters.category = categoryParam;
+                // Update active sidebar link
+                document.querySelectorAll('.filter-category-item').forEach(item => {
+                    if (item.getAttribute('data-category') === categoryParam) {
+                        item.classList.add('active');
+                    } else {
+                        item.classList.remove('active');
+                    }
+                });
+            }
+
+            if (searchParam) {
+                currentFilters.searchQuery = searchParam;
+                
+                // Set the value in the navbar search input
+                const navSearchInput = document.querySelector('.nav-search-input');
+                if (navSearchInput) navSearchInput.value = searchParam;
+
+                // Set the value in the sidebar search input
+                const sidebarSearchInput = document.getElementById('catalog-search-input');
+                if (sidebarSearchInput) sidebarSearchInput.value = searchParam;
+            }
+
+            // Setup listeners
+            setupEventListeners();
+            
+            // Initial render
+            applyFiltersAndRender();
+        });
+
+        function setupEventListeners() {
+            // Category sidebar items click
+            document.querySelectorAll('.filter-category-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    document.querySelectorAll('.filter-category-item').forEach(i => i.classList.remove('active'));
+                    item.classList.add('active');
+                    
+                    currentFilters.category = item.getAttribute('data-category');
+                    applyFiltersAndRender();
+                });
+            });
+
+            // Live Search Inputs (Syncing Navbar & Sidebar)
+            const sidebarSearch = document.getElementById('catalog-search-input');
+            const navbarSearch = document.querySelector('.nav-search-input');
+            
+            if (sidebarSearch) {
+                sidebarSearch.addEventListener('input', (e) => {
+                    const value = e.target.value;
+                    currentFilters.searchQuery = value;
+                    if (navbarSearch) navbarSearch.value = value;
+                    applyFiltersAndRender();
+                });
+            }
+
+            if (navbarSearch) {
+                navbarSearch.addEventListener('input', (e) => {
+                    const value = e.target.value;
+                    currentFilters.searchQuery = value;
+                    if (sidebarSearch) sidebarSearch.value = value;
+                    applyFiltersAndRender();
+                });
+            }
+
+            // Price range slider input
+            const priceSlider = document.getElementById('price-slider');
+            const priceMaxDisplay = document.getElementById('price-max-display');
+            if (priceSlider && priceMaxDisplay) {
+                priceSlider.addEventListener('input', (e) => {
+                    const value = parseInt(e.target.value);
+                    priceMaxDisplay.value = window.formatCurrency ? window.formatCurrency(value) : `Rp ${value}`;
+                    currentFilters.maxPrice = value;
+                    applyFiltersAndRender();
+                });
+            }
+
+            // Sorting drop-down change
+            const sortSelect = document.getElementById('catalog-sort');
+            if (sortSelect) {
+                sortSelect.addEventListener('change', (e) => {
+                    currentFilters.sortBy = e.target.value;
+                    applyFiltersAndRender();
+                });
+            }
+
+            // Reset filters button click
+            const resetBtn = document.getElementById('reset-filters-btn');
+            if (resetBtn) {
+                resetBtn.addEventListener('click', resetAllFilters);
+            }
+
+            // Prevent navbar search form submission reloading on catalog page
+            const navSearchForm = document.querySelector('.nav-search-form');
+            if (navSearchForm) {
+                navSearchForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                });
+            }
+        }
+
+        function resetAllFilters() {
+            currentFilters = {
+                category: 'all',
+                maxPrice: 500000,
+                searchQuery: '',
+                sortBy: 'featured'
+            };
+
+            // Reset UI
+            document.querySelectorAll('.filter-category-item').forEach(item => {
+                if (item.getAttribute('data-category') === 'all') {
+                    item.classList.add('active');
+                } else {
+                    item.classList.remove('active');
+                }
+            });
+
+            const priceSlider = document.getElementById('price-slider');
+            const priceMaxDisplay = document.getElementById('price-max-display');
+            if (priceSlider) priceSlider.value = 500000;
+            if (priceMaxDisplay) priceMaxDisplay.value = window.formatCurrency ? window.formatCurrency(500000) : 'Rp 500.000';
+
+            const sortSelect = document.getElementById('catalog-sort');
+            if (sortSelect) sortSelect.value = 'featured';
+
+            const navSearchInput = document.querySelector('.nav-search-input');
+            if (navSearchInput) navSearchInput.value = '';
+
+            const sidebarSearchInput = document.getElementById('catalog-search-input');
+            if (sidebarSearchInput) sidebarSearchInput.value = '';
+
+            // Clean up address bar query params
+            window.history.replaceState({}, document.title, window.location.pathname);
+
+            applyFiltersAndRender();
+        }
+
+        function applyFiltersAndRender() {
+            if (!window.PRODUCTS) return;
+
+            let filtered = [...window.PRODUCTS];
+
+            // 1. Filter by category
+            if (currentFilters.category !== 'all') {
+                filtered = filtered.filter(p => p.category === currentFilters.category);
+            }
+
+            // 2. Filter by search query
+            if (currentFilters.searchQuery) {
+                const query = currentFilters.searchQuery.toLowerCase().trim();
+                filtered = filtered.filter(p => 
+                    p.name.toLowerCase().includes(query) || 
+                    p.category.toLowerCase().includes(query) ||
+                    p.description.toLowerCase().includes(query)
+                );
+            }
+
+            // 3. Filter by price
+            filtered = filtered.filter(p => p.price <= currentFilters.maxPrice);
+
+            // 4. Sort results
+            if (currentFilters.sortBy === 'newest') {
+                filtered.sort((a, b) => b.isNew - a.isNew); // Show new products first
+            } else if (currentFilters.sortBy === 'price-asc') {
+                filtered.sort((a, b) => a.price - b.price);
+            } else if (currentFilters.sortBy === 'price-desc') {
+                filtered.sort((a, b) => b.price - a.price);
+            } else {
+                // 'featured' - sort by popularity (rating * reviewsCount)
+                filtered.sort((a, b) => (b.rating * b.reviewsCount) - (a.rating * a.reviewsCount));
+            }
+
+            // Render output
+            renderGrid(filtered);
+            updateSummaryText(filtered.length);
+        }
+
+        function renderGrid(products) {
+            const grid = document.getElementById('catalog-grid');
+            const emptyState = document.getElementById('catalog-empty-state');
+            if (!grid || !emptyState) return;
+
+            if (products.length === 0) {
+                grid.innerHTML = '';
+                grid.style.display = 'none';
+                emptyState.style.display = 'block';
+                return;
+            }
+
+            emptyState.style.display = 'none';
+            grid.style.display = 'grid';
+
+            let html = '';
+            products.forEach(product => {
+                const formattedPrice = window.formatCurrency(product.price);
+                const originalPriceHtml = product.originalPrice 
+                    ? `<span class="product-card-original-price">${window.formatCurrency(product.originalPrice)}</span>` 
+                    : '';
+                const discountPercentage = product.originalPrice 
+                    ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100) 
+                    : 0;
+                
+                const saleBadge = discountPercentage > 0 
+                    ? `<span class="badge-sale">Sale -${discountPercentage}%</span>` 
+                    : '';
+                
+                const newBadge = product.isNew && discountPercentage === 0
+                    ? `<span class="badge-new">New</span>` 
+                    : '';
+
+                const ratingStars = '★'.repeat(Math.round(product.rating)) + '☆'.repeat(5 - Math.round(product.rating));
+                const secondaryImg = product.images[1] || product.images[0];
+
+                html += `
+                    <div class="product-card">
+                        <div class="product-card-img-wrapper">
+                            ${saleBadge || newBadge}
+                            <a href="product.html?id=${product.id}">
+                                <img src="${product.images[0]}" alt="${product.name}" class="product-card-img" loading="lazy">
+                                <img src="${secondaryImg}" alt="${product.name}" class="product-card-img-secondary" loading="lazy">
+                            </a>
+                            <div class="product-card-actions">
+                                <a href="product.html?id=${product.id}" class="btn btn-secondary">Detail</a>
+                                <button onclick="quickAddCart(${product.id})" class="btn btn-primary">Beli</button>
+                            </div>
+                        </div>
+                        <div class="product-card-info">
+                            <span class="product-card-category">${product.category}</span>
+                            <h3 class="product-card-title">
+                                <a href="product.html?id=${product.id}">${product.name}</a>
+                            </h3>
+                            <div class="product-card-rating-row">
+                                <span class="star-rating">${ratingStars}</span>
+                                <span class="product-card-reviews">(${product.reviewsCount})</span>
+                            </div>
+                            <div class="product-card-price-row">
+                                <span class="product-card-price">${formattedPrice}</span>
+                                ${originalPriceHtml}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            grid.innerHTML = html;
+        }
+
+        function updateSummaryText(count) {
+            const summaryText = document.getElementById('catalog-summary-text');
+            if (!summaryText) return;
+
+            let text = '';
+            if (currentFilters.searchQuery) {
+                text = `Menampilkan ${count} produk untuk pencarian "${currentFilters.searchQuery}"`;
+            } else if (currentFilters.category !== 'all') {
+                text = `Menampilkan ${count} produk dalam kategori "${currentFilters.category}"`;
+            } else {
+                text = `Menampilkan ${count} produk`;
+            }
+
+            summaryText.textContent = text;
+        }
+
+        // Quick add to cart
+        function quickAddCart(productId) {
+            const product = window.PRODUCTS.find(p => p.id === productId);
+            if (!product) return;
+            
+            const defaultColor = product.colors && product.colors.length > 0 ? product.colors[0].name : '';
+            const defaultSize = product.sizes && product.sizes.length > 0 ? product.sizes[0] : '';
+            
+            if (window.Cart) {
+                window.Cart.addToCart(productId, 1, defaultColor, defaultSize);
+                window.openCartDrawer();
+            }
+        }
+    </script>
+</body>
+</html>

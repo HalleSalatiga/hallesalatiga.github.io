@@ -270,13 +270,19 @@ nav .logo-wrapper {
   align-items: center;
 }
 
+nav .logo-wrapper a {
+  display: flex;
+  align-items: center;
+}
+
 nav .logo {
-  height: 40px;
+  height: 48px;
+  width: auto;
   transition: var(--transition);
 }
 
 nav.nav-scrolled .logo {
-  height: 35px;
+  height: 38px;
 }
 
 /* Navigation Links */
@@ -691,6 +697,12 @@ nav .cart-badge {
   border-radius: 4px;
   background-color: var(--bg-secondary);
   margin-bottom: 16px;
+}
+
+.product-card-img-wrapper > a {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .product-card-img {

@@ -1373,6 +1373,7 @@ footer {
   justify-content: space-between;
   align-items: center;
   transition: var(--transition);
+  user-select: none;
 }
 
 .filter-category-item:hover {
@@ -1387,10 +1388,33 @@ footer {
   border-left: 3px solid var(--accent);
 }
 
-.filter-category-item.active::after {
-  content: '●';
-  color: var(--accent);
-  font-size: 8px;
+.category-name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.category-count {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-light);
+  background-color: var(--bg-secondary);
+  padding: 2px 8px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  transition: var(--transition);
+}
+
+.filter-category-item:hover .category-count {
+  color: var(--primary);
+  border-color: var(--border-dark);
+}
+
+.filter-category-item.active .category-count {
+  color: var(--primary);
+  background-color: #ffffff;
+  border-color: var(--accent);
+  font-weight: 700;
 }
 
 /* Price Slider styling */

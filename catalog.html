@@ -93,12 +93,8 @@
                 <!-- Category Filter -->
                 <div class="filter-group">
                     <h3>Kategori</h3>
-                    <ul class="filter-category-list">
-                        <li class="filter-category-item active" data-category="all">Semua Produk</li>
-                        <li class="filter-category-item" data-category="celana">Celana</li>
-                        <li class="filter-category-item" data-category="sepatu">Sepatu</li>
-                        <li class="filter-category-item" data-category="tas">Tas</li>
-                        <li class="filter-category-item" data-category="aksesori">Aksesori</li>
+                    <ul class="filter-category-list" id="filter-category-list">
+                        <!-- Dynamically populated from verified product catalog data -->
                     </ul>
                 </div>
                 
@@ -253,6 +249,8 @@
             sortBy: 'featured'
         };
 
+        let closeMobileFilter = null;
+
         document.addEventListener('DOMContentLoaded', () => {
             // Read URL parameters
             const urlParams = new URLSearchParams(window.location.search);
@@ -260,15 +258,7 @@
             const searchParam = urlParams.get('search');
 
             if (categoryParam) {
-                currentFilters.category = categoryParam;
-                // Update active sidebar link
-                document.querySelectorAll('.filter-category-item').forEach(item => {
-                    if (item.getAttribute('data-category') === categoryParam) {
-                        item.classList.add('active');
-                    } else {
-                        item.classList.remove('active');
-                    }
-                });
+                currentFilters.category = categoryParam.toLowerCase();
             }
 
             if (searchParam) {
@@ -286,9 +276,88 @@
             // Setup listeners
             setupEventListeners();
             
+            // Render verified categories with product counts
+            renderCategoryFilter();
+
             // Initial render
             applyFiltersAndRender();
         });
+
+        // Dynamically renders ONLY verified categories that genuinely have products (> 0)
+        function renderCategoryFilter() {
+            const listEl = document.getElementById('filter-category-list');
+            if (!listEl || !window.PRODUCTS) return;
+
+            // 1. Calculate actual category counts from PRODUCTS
+            const counts = {};
+            window.PRODUCTS.forEach(p => {
+                if (p.category) {
+                    const cat = p.category.toLowerCase().trim();
+                    counts[cat] = (counts[cat] || 0) + 1;
+                }
+            });
+
+            // 2. Verified category definitions: only include categories with count > 0
+            const categoryLabels = {
+                'tas': 'Tas',
+                'celana': 'Celana',
+                'sepatu': 'Sepatu',
+                'aksesori': 'Aksesori'
+            };
+
+            const availableCategories = Object.keys(counts).filter(cat => counts[cat] > 0);
+
+            // Display order: Tas first (primary boutique collection), then Celana, Sepatu, Aksesori
+            const priorityOrder = ['tas', 'celana', 'sepatu', 'aksesori'];
+            availableCategories.sort((a, b) => {
+                const idxA = priorityOrder.indexOf(a);
+                const idxB = priorityOrder.indexOf(b);
+                if (idxA !== -1 && idxB !== -1) return idxA - idxB;
+                if (idxA !== -1) return -1;
+                if (idxB !== -1) return 1;
+                return a.localeCompare(b);
+            });
+
+            const totalProducts = window.PRODUCTS.length;
+            const isAllActive = currentFilters.category === 'all';
+
+            let html = `
+                <li class="filter-category-item ${isAllActive ? 'active' : ''}" data-category="all">
+                    <span class="category-name">Semua Produk</span>
+                    <span class="category-count">${totalProducts}</span>
+                </li>
+            `;
+
+            availableCategories.forEach(cat => {
+                const isActive = currentFilters.category === cat;
+                const label = categoryLabels[cat] || (cat.charAt(0).toUpperCase() + cat.slice(1));
+                const count = counts[cat];
+                html += `
+                    <li class="filter-category-item ${isActive ? 'active' : ''}" data-category="${cat}">
+                        <span class="category-name">${label}</span>
+                        <span class="category-count">${count}</span>
+                    </li>
+                `;
+            });
+
+            listEl.innerHTML = html;
+
+            // Reattach click listeners to category items
+            listEl.querySelectorAll('.filter-category-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    const selectedCat = item.getAttribute('data-category');
+                    currentFilters.category = selectedCat;
+                    
+                    listEl.querySelectorAll('.filter-category-item').forEach(i => i.classList.remove('active'));
+                    item.classList.add('active');
+
+                    if (window.innerWidth <= 991 && typeof closeMobileFilter === 'function') {
+                        closeMobileFilter();
+                    }
+                    applyFiltersAndRender();
+                });
+            });
+        }
 
         function setupEventListeners() {
             // Mobile Filter Drawer Toggling
@@ -303,29 +372,15 @@
                 document.body.style.overflow = 'hidden';
             }
 
-            function closeMobileFilter() {
+            closeMobileFilter = function() {
                 if (sidebar) sidebar.classList.remove('open');
                 if (sidebarOverlay) sidebarOverlay.classList.remove('open');
                 document.body.style.overflow = '';
-            }
+            };
 
             if (mobileFilterBtn) mobileFilterBtn.addEventListener('click', openMobileFilter);
             if (closeFilterBtn) closeFilterBtn.addEventListener('click', closeMobileFilter);
             if (sidebarOverlay) sidebarOverlay.addEventListener('click', closeMobileFilter);
-
-            // Category sidebar items click
-            document.querySelectorAll('.filter-category-item').forEach(item => {
-                item.addEventListener('click', () => {
-                    document.querySelectorAll('.filter-category-item').forEach(i => i.classList.remove('active'));
-                    item.classList.add('active');
-                    
-                    currentFilters.category = item.getAttribute('data-category');
-                    if (window.innerWidth <= 991) {
-                        closeMobileFilter();
-                    }
-                    applyFiltersAndRender();
-                });
-            });
 
             // Live Search Inputs (Syncing Navbar & Sidebar)
             const sidebarSearch = document.getElementById('catalog-search-input');
@@ -393,14 +448,8 @@
                 sortBy: 'featured'
             };
 
-            // Reset UI
-            document.querySelectorAll('.filter-category-item').forEach(item => {
-                if (item.getAttribute('data-category') === 'all') {
-                    item.classList.add('active');
-                } else {
-                    item.classList.remove('active');
-                }
-            });
+            // Re-render categories with 'all' active
+            renderCategoryFilter();
 
             const priceSlider = document.getElementById('price-slider');
             const priceMaxDisplay = document.getElementById('price-max-display');
@@ -418,6 +467,10 @@
 
             // Clean up address bar query params
             window.history.replaceState({}, document.title, window.location.pathname);
+
+            if (window.innerWidth <= 991 && typeof closeMobileFilter === 'function') {
+                closeMobileFilter();
+            }
 
             applyFiltersAndRender();
         }

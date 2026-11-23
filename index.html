@@ -170,9 +170,9 @@
                 </a>
                 
                 <a href="catalog.html?category=tas" class="category-card">
-                    <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=600&q=80" class="category-card-bg" alt="Tas">
+                    <img src="image/catalog/CRISTY/CRISTY(1).jpg" class="category-card-bg" alt="Koleksi Tas Kulit Halle Salatiga">
                     <div class="category-card-content">
-                        <h3>Tas</h3>
+                        <h3>Tas & Leather</h3>
                         <div class="category-card-link">Selengkapnya <span>&rarr;</span></div>
                     </div>
                 </a>
@@ -211,19 +211,18 @@
         <div class="container">
             <div class="location-grid">
                 <div class="location-info">
-                    <div class="hero-subtitle">Kunjungi Offline Store Kami</div>
+                    <div class="hero-subtitle">Lokasi Offline Store</div>
                     <h3>Halle Salatiga Store</h3>
                     <p>
-                        Ingin mencoba langsung pakaian dan mencocokkan size? Silakan kunjungi offline store kami yang strategis. 
-                        Tim kami siap menyambut dan membantu Anda menemukan gaya terbaik.
+                        Kunjungi offline boutique store kami di Salatiga. Rasakan langsung kualitas bahan kulit asli, kenyamanan fitting, dan nikmati pelayanan personal dari fashion advisor kami.
                     </p>
                     
                     <ul class="location-details">
                         <li>
                             <div class="location-details-icon"><i class="fa-solid fa-location-dot"></i></div>
                             <div>
-                                <strong>Alamat Toko:</strong><br>
-                                Jl. Diponegoro No. 80, Salatiga, Jawa Tengah, Indonesia.
+                                <strong>Alamat Lengkap Toko:</strong><br>
+                                MG97+8MR, Kutowinangun Kidul, Tingkir, Salatiga City, Central Java 50742, Indonesia
                             </div>
                         </li>
                         <li>
@@ -242,14 +241,14 @@
                         </li>
                     </ul>
                     
-                    <a href="https://hallesalatiga.my.id/maps/" class="btn btn-primary" target="_blank">
-                        <i class="fa-solid fa-map-location-dot" style="margin-right: 8px;"></i> Petunjuk Arah Google Maps
+                    <a href="https://www.google.com/maps/search/?api=1&query=MG97%2B8MR%2C%20Kutowinangun%20Kidul%2C%20Tingkir%2C%20Salatiga%20City%2C%20Central%20Java%2050742" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-solid fa-map-location-dot" style="margin-right: 8px;"></i> Lihat Lokasi di Google Maps
                     </a>
                 </div>
                 
                 <div class="map-wrapper">
                     <!-- Embedded Responsive Map -->
-                    <iframe class="map-frame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3957.5750247657984!2d110.50119777573678!3d-7.345427392663445!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a7837072049d5%3A0xea8c9fb60570b22a!2sSalatiga%2C%20Salatiga%20City%2C%20Central%20Java!5e0!3m2!1sen!2sid!4v1703900000000!5m2!1sen!2sid" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe class="map-frame" src="https://maps.google.com/maps?q=MG97%2B8MR%2C+Kutowinangun+Kidul%2C+Tingkir%2C+Salatiga+City%2C+Central+Java+50742&t=&z=16&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Peta Lokasi Offline Store Halle Salatiga"></iframe>
                 </div>
             </div>
         </div>
@@ -262,7 +261,15 @@
                 <div class="footer-brand">
                     <h3>Halle Salatiga</h3>
                     <p>Toko fashion modern penyedia produk berkualitas seperti celana, sepatu, tas, dan aksesori. Gaya kasual hingga formal, nyaman dipakai untuk menemani keseharian Anda.</p>
-                    <div class="footer-socials">
+                    <p class="footer-address">
+                        <i class="fa-solid fa-location-dot" style="color: var(--accent); margin-right: 6px;"></i>
+                        <strong>Offline Store:</strong><br>
+                        MG97+8MR, Kutowinangun Kidul, Tingkir, Salatiga City, Central Java 50742, Indonesia
+                    </p>
+                    <a href="https://www.google.com/maps/search/?api=1&query=MG97%2B8MR%2C%20Kutowinangun%20Kidul%2C%20Tingkir%2C%20Salatiga%20City%2C%20Central%20Java%2050742" target="_blank" rel="noopener noreferrer" class="footer-map-link">
+                        <i class="fa-solid fa-map-location-dot"></i> Lihat Lokasi di Google Maps
+                    </a>
+                    <div class="footer-socials" style="margin-top: 16px;">
                         <a href="#" class="social-btn" aria-label="Follow us on Instagram"><i class="fa-brands fa-instagram"></i></a>
                         <a href="#" class="social-btn" aria-label="Follow us on TikTok"><i class="fa-brands fa-tiktok"></i></a>
                         <a href="#" class="social-btn" aria-label="Follow us on Facebook"><i class="fa-brands fa-facebook-f"></i></a>
@@ -332,8 +339,11 @@
             const grid = document.getElementById('featured-products-grid');
             if (!grid || !window.PRODUCTS) return;
 
-            // Filter products that are marked as featured
-            const featuredItems = window.PRODUCTS.filter(p => p.isFeatured).slice(0, 4);
+            // Filter products that are marked as featured, prioritizing genuine Halle signature releases
+            const featuredItems = [...window.PRODUCTS]
+                .filter(p => p.isFeatured)
+                .sort((a, b) => (b.id >= 31 ? 1 : 0) - (a.id >= 31 ? 1 : 0))
+                .slice(0, 6);
 
             let html = '';
             featuredItems.forEach(product => {

@@ -173,7 +173,15 @@
                 <div class="footer-brand">
                     <h3>Halle Salatiga</h3>
                     <p>Toko fashion modern penyedia produk berkualitas seperti celana, sepatu, tas, dan aksesori. Gaya kasual hingga formal, nyaman dipakai untuk menemani keseharian Anda.</p>
-                    <div class="footer-socials">
+                    <p class="footer-address">
+                        <i class="fa-solid fa-location-dot" style="color: var(--accent); margin-right: 6px;"></i>
+                        <strong>Offline Store:</strong><br>
+                        MG97+8MR, Kutowinangun Kidul, Tingkir, Salatiga City, Central Java 50742, Indonesia
+                    </p>
+                    <a href="https://www.google.com/maps/search/?api=1&query=MG97%2B8MR%2C%20Kutowinangun%20Kidul%2C%20Tingkir%2C%20Salatiga%20City%2C%20Central%20Java%2050742" target="_blank" rel="noopener noreferrer" class="footer-map-link">
+                        <i class="fa-solid fa-map-location-dot"></i> Lihat Lokasi di Google Maps
+                    </a>
+                    <div class="footer-socials" style="margin-top: 16px;">
                         <a href="#" class="social-btn" aria-label="Follow us on Instagram"><i class="fa-brands fa-instagram"></i></a>
                         <a href="#" class="social-btn" aria-label="Follow us on TikTok"><i class="fa-brands fa-tiktok"></i></a>
                         <a href="#" class="social-btn" aria-label="Follow us on Facebook"><i class="fa-brands fa-facebook-f"></i></a>
@@ -408,6 +416,19 @@
                 document.querySelectorAll('.color-swatch-btn').forEach(el => el.classList.remove('active'));
                 btnEl.classList.add('active');
             }
+            if (currentProduct && currentProduct.colors) {
+                const colObj = currentProduct.colors.find(c => c.name === colorName);
+                if (colObj && colObj.image) {
+                    const mainImg = document.getElementById('main-product-image');
+                    if (mainImg) mainImg.src = colObj.image;
+                    document.querySelectorAll('.gallery-thumb-item img').forEach(tImg => {
+                        if (tImg.getAttribute('src') === colObj.image) {
+                            document.querySelectorAll('.gallery-thumb-item').forEach(el => el.classList.remove('active'));
+                            tImg.parentElement.classList.add('active');
+                        }
+                    });
+                }
+            }
         };
 
         window.selectSize = function(sizeVal, btnEl) {
@@ -487,7 +508,7 @@
             // Filter products of same category, excluding current product
             const related = window.PRODUCTS
                 .filter(p => p.category === currentProduct.category && p.id !== currentProduct.id)
-                .slice(0, 4);
+                .slice(0, 3);
 
             if (related.length === 0) {
                 grid.parentElement.style.display = 'none'; // Hide section if none

@@ -886,6 +886,222 @@ const PRODUCTS = [
     stock: 25,
     isNew: true,
     isFeatured: false
+  },
+  {
+    id: 31,
+    name: "Halle Azalia Series Leather Bag",
+    category: "tas",
+    price: 289000,
+    originalPrice: 389000,
+    description: "Koleksi tas wanita Halle Azalia berbahan kulit asli berkualitas dengan siluet elegan dan feminin. Dilengkapi saku depan praktis, kompartemen utama beresleting aman, dan aksen kancing minimalis yang anggun.",
+    details: [
+      "Bahan: Kulit Asli Berkualitas (Genuine Leather)",
+      "Dimensi Lebar: 21,5 cm",
+      "Saku depan multifungsi dengan jahitan presisi",
+      "Tali jinjing & tali selempang nyaman",
+      "Resleting metal premium anti-macet"
+    ],
+    colors: [
+      { name: "Black", hex: "#1C1C1C", image: "image/catalog/AZALIA/1.jpg" },
+      { name: "Dark Brown", hex: "#3E2723", image: "image/catalog/AZALIA/2.jpg" },
+      { name: "Light Brown", hex: "#A0522D", image: "image/catalog/AZALIA/3.jpg" },
+      { name: "Taupe", hex: "#8B8589", image: "image/catalog/AZALIA/4.jpg" },
+      { name: "White", hex: "#F5F5F0", image: "image/catalog/AZALIA/5.jpg" },
+      { name: "Maroon", hex: "#58111A", image: "image/catalog/AZALIA/6.jpg" }
+    ],
+    sizes: ["Lebar 21.5 cm"],
+    images: [
+      "image/catalog/AZALIA/1.jpg",
+      "image/catalog/AZALIA/AZALIA .jpg",
+      "image/catalog/AZALIA/2.jpg",
+      "image/catalog/AZALIA/3.jpg",
+      "image/catalog/AZALIA/4.jpg",
+      "image/catalog/AZALIA/5.jpg",
+      "image/catalog/AZALIA/6.jpg",
+      "image/catalog/AZALIA/7.jpg"
+    ],
+    rating: 4.9,
+    reviewsCount: 88,
+    stock: 12,
+    isNew: true,
+    isFeatured: true
+  },
+  {
+    id: 32,
+    name: "Halle Cristy Series Leather Handbag",
+    category: "tas",
+    price: 329000,
+    originalPrice: 449000,
+    description: "Tas handbag wanita kulit asli berkualitas tinggi dari Halle Cristy Series. Menghadirkan siluet boxy klasik bertekstur jeruk halus dengan ruang penyimpanan lega, saku belakang beresleting, dan strap bahu yang dapat dilepas pasang.",
+    details: [
+      "Bahan dari kulit asli berkualitas",
+      "Dimensi: Panjang 25 cm x Tinggi 15 cm x Lebar 12 cm",
+      "Dilengkapi strap selempang yang nyaman",
+      "Saku belakang dengan zipper untuk akses cepat",
+      "Emboss logo Halle otentik pada bodi tas"
+    ],
+    colors: [
+      { name: "Taupe", hex: "#9E8B7D", image: "image/catalog/CRISTY/1.jpg" },
+      { name: "Maroon", hex: "#601A24", image: "image/catalog/CRISTY/2.jpg" },
+      { name: "Dark Brown", hex: "#38251B", image: "image/catalog/CRISTY/3.jpg" },
+      { name: "White", hex: "#F7F7F7", image: "image/catalog/CRISTY/4.jpg" },
+      { name: "Light Brown", hex: "#B87333", image: "image/catalog/CRISTY/6.jpg" }
+    ],
+    sizes: ["25 x 15 x 12 cm"],
+    images: [
+      "image/catalog/CRISTY/1.jpg",
+      "image/catalog/CRISTY/cristy.jpg",
+      "image/catalog/CRISTY/CRISTY(1).jpg",
+      "image/catalog/CRISTY/2.jpg",
+      "image/catalog/CRISTY/3.jpg",
+      "image/catalog/CRISTY/4.jpg",
+      "image/catalog/CRISTY/5.jpg",
+      "image/catalog/CRISTY/6.jpg"
+    ],
+    rating: 5.0,
+    reviewsCount: 95,
+    stock: 10,
+    isNew: true,
+    isFeatured: true
+  },
+  {
+    id: 33,
+    name: "Halle Kareena Unisex Leather Hand Bag",
+    category: "tas",
+    price: 249000,
+    originalPrice: 339000,
+    description: "Handbag dan clutch unisex berbahan kulit asli berkualitas dari Halle Kareena Series. Desain minimalis serbaguna cocok untuk pria maupun wanita dalam aktivitas formal, kantor, hingga kasual santai.",
+    details: [
+      "Bahan kulit asli bertekstur pebble premium",
+      "Model: Unisex Hand Bag / Clutch serbaguna",
+      "Tali pegangan tangan (wristlet strap) yang kokoh",
+      "Saku depan slip & kompartemen utama beresleting",
+      "Emboss logo Halle premium di sudut depan"
+    ],
+    colors: [
+      { name: "Black", hex: "#151515", image: "image/catalog/KAREENA/KAREENA 1.jpg" },
+      { name: "Mocca", hex: "#8D7B68", image: "image/catalog/KAREENA/KAREENA 2.jpg" },
+      { name: "Maroon", hex: "#541212", image: "image/catalog/KAREENA/KAREENA 3.jpg" },
+      { name: "Brown", hex: "#5C4033", image: "image/catalog/KAREENA/KAREENA 4.jpg" }
+    ],
+    sizes: ["One Size"],
+    images: [
+      "image/catalog/KAREENA/KAREENA 1.jpg",
+      "image/catalog/KAREENA/KAREENA.jpg",
+      "image/catalog/KAREENA/5.jpg",
+      "image/catalog/KAREENA/KAREENA 2.jpg",
+      "image/catalog/KAREENA/KAREENA 3.jpg",
+      "image/catalog/KAREENA/KAREENA 4.jpg"
+    ],
+    rating: 4.9,
+    reviewsCount: 76,
+    stock: 14,
+    isNew: true,
+    isFeatured: true
+  },
+  {
+    id: 34,
+    name: "Halle Naura Series Leather Bag",
+    category: "tas",
+    price: 299000,
+    originalPrice: 399000,
+    description: "Tas kulit wanita Halle Naura Series dengan kombinasi warna handle yang kontras nan manis. Model flap bag berstruktur kokoh dengan kunci twist-lock modern yang anggun dan elegan.",
+    details: [
+      "Bahan: Kulit Asli Premium Bertekstur",
+      "Desain Flap Bag dengan Kunci Putar (Twist-lock)",
+      "Top Handle kontras bernuansa tan hangat",
+      "Dilengkapi tali panjang selempang yang dapat diatur",
+      "Pilihan warna netral dan hangat untuk segala suasana"
+    ],
+    colors: [
+      { name: "Taupe", hex: "#8F8177", image: "image/catalog/NAURA/NAURA 1.jpg" },
+      { name: "Maroon", hex: "#59161B", image: "image/catalog/NAURA/NAURA 2.jpg" },
+      { name: "Dark Brown", hex: "#34221A", image: "image/catalog/NAURA/NAURA 3.jpg" },
+      { name: "Light Brown", hex: "#995D3F", image: "image/catalog/NAURA/NAURA 4.jpg" },
+      { name: "Black", hex: "#1A1A1A", image: "image/catalog/NAURA/NAURA 5.jpg" }
+    ],
+    sizes: ["One Size"],
+    images: [
+      "image/catalog/NAURA/NAURA 1.jpg",
+      "image/catalog/NAURA/NAURA.jpg",
+      "image/catalog/NAURA/NAURA 2.jpg",
+      "image/catalog/NAURA/NAURA 3.jpg",
+      "image/catalog/NAURA/NAURA 4.jpg",
+      "image/catalog/NAURA/NAURA 5.jpg"
+    ],
+    rating: 4.8,
+    reviewsCount: 64,
+    stock: 9,
+    isNew: true,
+    isFeatured: true
+  },
+  {
+    id: 35,
+    name: "Halle Viola Croco Leather Bag",
+    category: "tas",
+    price: 319000,
+    originalPrice: 429000,
+    description: "Tas jinjing dan selempang mewah Halle Viola dengan motif croco embossed mengkilap yang memberikan kesan glamor berkelas. Memiliki kompartemen dalam teratur dengan resleting ganda untuk keamanan ekstra.",
+    details: [
+      "Bahan: Premium Crocodile Pattern Leather (Croco Embossed)",
+      "Kompartemen dalam bersekat & beresleting ganda",
+      "Pegangan atas (Top Handle) kokoh",
+      "Dilengkapi adjustable shoulder strap",
+      "Hardware gunmetal mewah tahan karat"
+    ],
+    colors: [
+      { name: "Brown", hex: "#40281F", image: "image/catalog/VIOLA/1.jpg" },
+      { name: "Black", hex: "#181818", image: "image/catalog/VIOLA/2.jpg" }
+    ],
+    sizes: ["One Size"],
+    images: [
+      "image/catalog/VIOLA/1.jpg",
+      "image/catalog/VIOLA/2.jpg",
+      "image/catalog/VIOLA/3.jpg"
+    ],
+    rating: 4.9,
+    reviewsCount: 57,
+    stock: 8,
+    isNew: true,
+    isFeatured: true
+  },
+  {
+    id: 36,
+    name: "Halle Zinia Shoulder Leather Bag",
+    category: "tas",
+    price: 279000,
+    originalPrice: 369000,
+    description: "Shoulder bag wanita Halle Zinia dengan aksen strap vertikal dan hardware metal pengunci kontras. Siluet minimalis nan elegan yang sangat pas disandang di bahu untuk acara kasual maupun semi-formal.",
+    details: [
+      "Bahan: Kulit asli bertekstur halus berkualitas",
+      "Tali bahu (shoulder strap) ergonomis dan fleksibel",
+      "Aksen buckle metal vertikal pada flap penutup",
+      "Logo Halle grafir halus di bagian depan",
+      "Kapasitas ideal untuk dompet, smartphone, dan kosmetik"
+    ],
+    colors: [
+      { name: "White", hex: "#F8F8F6", image: "image/catalog/ZINIA/1.jpg" },
+      { name: "Light Brown", hex: "#B27B52", image: "image/catalog/ZINIA/2.jpg" },
+      { name: "Taupe", hex: "#9C8E84", image: "image/catalog/ZINIA/3.jpg" },
+      { name: "Black", hex: "#1C1C1C", image: "image/catalog/ZINIA/4.jpg" },
+      { name: "Maroon", hex: "#5A1720", image: "image/catalog/ZINIA/5.jpg" },
+      { name: "Dark Brown", hex: "#38261E", image: "image/catalog/ZINIA/6.jpg" }
+    ],
+    sizes: ["One Size"],
+    images: [
+      "image/catalog/ZINIA/1.jpg",
+      "image/catalog/ZINIA/2.jpg",
+      "image/catalog/ZINIA/3.jpg",
+      "image/catalog/ZINIA/4.jpg",
+      "image/catalog/ZINIA/5.jpg",
+      "image/catalog/ZINIA/6.jpg",
+      "image/catalog/ZINIA/7.jpg"
+    ],
+    rating: 4.8,
+    reviewsCount: 71,
+    stock: 11,
+    isNew: true,
+    isFeatured: true
   }
 ];
 

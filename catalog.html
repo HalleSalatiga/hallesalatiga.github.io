@@ -63,17 +63,24 @@
         </div>
     </nav>
     <div class="nav-overlay"></div>
+    <div id="catalog-sidebar-overlay" class="catalog-sidebar-overlay"></div>
 
     <!-- MAIN CATALOG CONTAINER -->
     <main class="container section-spacing" style="margin-top: 80px;">
         <div class="section-header" style="margin-bottom: 24px; text-align: left;">
-            <h2 style="display: block; padding: 0; margin: 0;">Katalog Fashion</h2>
-            <p style="margin: 8px 0 0 0; text-align: left;">Temukan produk fashion pilihan berkualitas dari ujung kepala hingga ujung kaki.</p>
+            <div class="hero-subtitle" style="margin-bottom: 6px;">Koleksi Fashion Halle Salatiga</div>
+            <h1 style="font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 600; margin: 0 0 10px 0; color: var(--primary);">Katalog Produk</h1>
+            <p style="margin: 0; text-align: left; color: var(--text-muted); font-size: 15px; max-width: 680px;">Kurasi produk fashion premium, tas kulit asli, sepatu, celana, dan aksesori berkualitas dengan siluet modern dan pengerjaan berstandar tinggi.</p>
         </div>
         
         <div class="catalog-layout">
             <!-- FILTER SIDEBAR -->
             <aside class="catalog-sidebar">
+                <div class="catalog-sidebar-header">
+                    <h3>Filter Produk</h3>
+                    <button id="close-filter-btn" class="catalog-sidebar-close" aria-label="Tutup filter">&times;</button>
+                </div>
+
                 <!-- Search Filter -->
                 <div class="filter-group">
                     <h3>Pencarian</h3>
@@ -109,7 +116,7 @@
                 </div>
                 
                 <!-- Trust Badge Widget -->
-                <div class="filter-group" style="margin-top: 40px; border: 1px solid var(--border); padding: 16px; border-radius: 4px; background-color: var(--bg-secondary);">
+                <div class="filter-group" style="margin-top: 32px; border: 1px solid var(--border); padding: 16px; border-radius: 4px; background-color: var(--bg-secondary);">
                     <h4 style="font-size: 13px; font-weight: 700; text-transform: uppercase; margin-bottom: 8px;"><i class="fa-solid fa-face-smile" style="color: var(--accent); margin-right: 6px;"></i> Belanja Aman</h4>
                     <p style="font-size: 12px; color: var(--text-muted); line-height: 1.4;">Halle Salatiga melayani pembayaran COD untuk wilayah Indonesia dan garansi tukar ukuran gratis.</p>
                 </div>
@@ -123,14 +130,20 @@
                         Menampilkan semua produk
                     </div>
                     
-                    <div style="display: flex; gap: 12px; align-items: center;">
-                        <label for="catalog-sort" style="font-size: 13px; color: var(--text-muted);">Urutkan:</label>
-                        <select id="catalog-sort" class="catalog-sort-select">
-                            <option value="featured">Terpopuler</option>
-                            <option value="newest">Terbaru</option>
-                            <option value="price-asc">Harga: Rendah ke Tinggi</option>
-                            <option value="price-desc">Harga: Tinggi ke Rendah</option>
-                        </select>
+                    <div class="catalog-controls-right">
+                        <button id="mobile-filter-btn" class="mobile-filter-btn" aria-label="Buka Filter">
+                            <i class="fa-solid fa-sliders"></i> Filter & Kategori
+                        </button>
+                        
+                        <div class="catalog-sort-wrapper">
+                            <label for="catalog-sort" style="font-size: 13px; color: var(--text-muted); white-space: nowrap;">Urutkan:</label>
+                            <select id="catalog-sort" class="catalog-sort-select">
+                                <option value="featured">Terpopuler</option>
+                                <option value="newest">Terbaru</option>
+                                <option value="price-asc">Harga: Rendah ke Tinggi</option>
+                                <option value="price-desc">Harga: Tinggi ke Rendah</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
                 
@@ -157,7 +170,21 @@
                 <div class="footer-brand">
                     <h3>Halle Salatiga</h3>
                     <p>Toko fashion modern penyedia produk berkualitas seperti celana, sepatu, tas, dan aksesori. Gaya kasual hingga formal, nyaman dipakai untuk menemani keseharian Anda.</p>
-                    <div class="footer-socials">
+                    <p class="footer-address">
+                        <i class="fa-solid fa-location-dot" style="color: var(--accent); margin-right: 6px;"></i>
+                        <strong>Offline Store:</strong><br>
+                        MG97+8MR, Kutowinangun Kidul, Tingkir, Salatiga City, Central Java 50742, Indonesia
+                    </p>
+                    <a href="https://www.google.com/maps/search/?api=1&query=MG97%2B8MR%2C%20Kutowinangun%20Kidul%2C%20Tingkir%2C%20Salatiga%20City%2C%20Central%20Java%2050742" target="_blank" rel="noopener noreferrer" class="footer-map-link">
+                        <i class="fa-solid fa-map-location-dot"></i> Lihat Lokasi di Google Maps
+                    </a>
+                    <div class="footer-socials" style="margin-top: 16px;">
+                        <a href="#" class="social-btn" aria-label="Follow us on Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="social-btn" aria-label="Follow us on TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="#" class="social-btn" aria-label="Follow us on Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="social-btn" aria-label="Chat via WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
                         <a href="#" class="social-btn" aria-label="Follow us on Instagram"><i class="fa-brands fa-instagram"></i></a>
                         <a href="#" class="social-btn" aria-label="Follow us on TikTok"><i class="fa-brands fa-tiktok"></i></a>
                         <a href="#" class="social-btn" aria-label="Follow us on Facebook"><i class="fa-brands fa-facebook-f"></i></a>
@@ -264,6 +291,28 @@
         });
 
         function setupEventListeners() {
+            // Mobile Filter Drawer Toggling
+            const mobileFilterBtn = document.getElementById('mobile-filter-btn');
+            const closeFilterBtn = document.getElementById('close-filter-btn');
+            const sidebar = document.querySelector('.catalog-sidebar');
+            const sidebarOverlay = document.getElementById('catalog-sidebar-overlay');
+
+            function openMobileFilter() {
+                if (sidebar) sidebar.classList.add('open');
+                if (sidebarOverlay) sidebarOverlay.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeMobileFilter() {
+                if (sidebar) sidebar.classList.remove('open');
+                if (sidebarOverlay) sidebarOverlay.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+
+            if (mobileFilterBtn) mobileFilterBtn.addEventListener('click', openMobileFilter);
+            if (closeFilterBtn) closeFilterBtn.addEventListener('click', closeMobileFilter);
+            if (sidebarOverlay) sidebarOverlay.addEventListener('click', closeMobileFilter);
+
             // Category sidebar items click
             document.querySelectorAll('.filter-category-item').forEach(item => {
                 item.addEventListener('click', () => {
@@ -271,6 +320,9 @@
                     item.classList.add('active');
                     
                     currentFilters.category = item.getAttribute('data-category');
+                    if (window.innerWidth <= 991) {
+                        closeMobileFilter();
+                    }
                     applyFiltersAndRender();
                 });
             });
@@ -401,8 +453,13 @@
             } else if (currentFilters.sortBy === 'price-desc') {
                 filtered.sort((a, b) => b.price - a.price);
             } else {
-                // 'featured' - sort by popularity (rating * reviewsCount)
-                filtered.sort((a, b) => (b.rating * b.reviewsCount) - (a.rating * a.reviewsCount));
+                // 'featured' - sort by popularity, prioritizing signature releases
+                filtered.sort((a, b) => {
+                    const aSig = a.id >= 31 ? 1 : 0;
+                    const bSig = b.id >= 31 ? 1 : 0;
+                    if (bSig !== aSig) return bSig - aSig;
+                    return (b.rating * b.reviewsCount) - (a.rating * a.reviewsCount);
+                });
             }
 
             // Render output

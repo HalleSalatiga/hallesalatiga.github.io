@@ -46,12 +46,23 @@ const Cart = {
       if (quantity > product.stock) {
         this.showToast(`Hanya dapat menambahkan hingga ${product.stock} barang (batas stok).`, 'warning');
       }
+      let itemImage = '';
+      if (colorName && product.colors) {
+        const matchedColor = product.colors.find(c => c.name === colorName);
+        if (matchedColor && matchedColor.image) {
+          itemImage = matchedColor.image;
+        }
+      }
+      if (!itemImage && product.images && product.images.length > 0) {
+        itemImage = product.images[0];
+      }
+
       cart.push({
         cartItemId,
         productId: product.id,
         name: product.name,
         price: product.price,
-        image: product.images[0],
+        image: itemImage,
         color: colorName || '',
         size: size || '',
         quantity: finalQty,

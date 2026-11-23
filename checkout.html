@@ -323,10 +323,13 @@
                     item.size ? `Size: ${item.size}` : '',
                     `Jumlah: ${item.quantity}`
                 ].filter(Boolean).join(', ');
+                const itemImgHtml = (item.image && !item.image.startsWith('http'))
+                    ? `<img src="${item.image}" alt="${item.name}" class="checkout-item-img" onerror="this.outerHTML='<div class=\\'checkout-item-no-img\\'><span>HALLE</span></div>';">`
+                    : `<div class="checkout-item-no-img"><span>HALLE</span></div>`;
 
                 html += `
                     <div class="checkout-item-row">
-                        <img src="${item.image}" alt="${item.name}" class="checkout-item-img">
+                        ${itemImgHtml}
                         <div class="checkout-item-info">
                             <h4 class="checkout-item-name">${item.name}</h4>
                             <span class="checkout-item-specs">${specs}</span>

@@ -136,10 +136,13 @@ function renderCartDrawerItems(cart, total) {
     const formattedPrice = window.formatCurrency ? window.formatCurrency(item.price * item.quantity) : `Rp ${item.price * item.quantity}`;
     const sizeBadge = item.size ? `<span class="item-spec-badge">Size: ${item.size}</span>` : '';
     const colorBadge = item.color ? `<span class="item-spec-badge">Warna: ${item.color}</span>` : '';
+    const itemImgHtml = (item.image && !item.image.startsWith('http'))
+      ? `<img src="${item.image}" alt="${item.name}" class="cart-item-img" onerror="this.outerHTML='<div class=\\'cart-item-no-img\\'><span>HALLE</span></div>';">`
+      : `<div class="cart-item-no-img"><span>HALLE</span></div>`;
 
     html += `
       <div class="cart-item" data-cart-item-id="${item.cartItemId}">
-        <img src="${item.image}" alt="${item.name}" class="cart-item-img">
+        ${itemImgHtml}
         <div class="cart-item-details">
           <h4 class="cart-item-title">${item.name}</h4>
           <div class="cart-item-specs">

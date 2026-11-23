@@ -763,6 +763,99 @@ nav .cart-badge {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 
+/* Editorial Boutique Placeholder for products without photography */
+.product-card-placeholder-link {
+  display: flex !important;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  background: linear-gradient(145deg, #faf8f5 0%, #f0ebe4 100%);
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  position: relative;
+  transition: var(--transition);
+}
+
+.product-card-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 6px;
+  width: 100%;
+}
+
+.product-placeholder-brand-mark {
+  margin-bottom: 2px;
+  opacity: 0.9;
+  transition: transform 0.4s ease;
+}
+
+.product-card:hover .product-placeholder-brand-mark {
+  transform: translateY(-3px) scale(1.05);
+}
+
+.product-placeholder-brand {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+.product-placeholder-text {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 0.03em;
+}
+
+.product-placeholder-sub {
+  font-size: 10.5px;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+}
+
+/* Product Detail Placeholder in product.html */
+.product-detail-placeholder {
+  width: 100%;
+  aspect-ratio: 4/5;
+  background: linear-gradient(145deg, #faf8f5 0%, #f0ebe4 100%);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 32px 20px;
+}
+
+.product-detail-placeholder-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Cart & Checkout fallback thumbnail */
+.cart-item-no-img,
+.checkout-item-no-img {
+  width: 60px;
+  height: 75px;
+  background: #f0ebe4;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--primary);
+  flex-shrink: 0;
+  border: 1px solid var(--border);
+}
+
 .product-card-info {
   display: flex;
   flex-direction: column;

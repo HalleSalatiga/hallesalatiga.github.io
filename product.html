@@ -334,19 +334,56 @@
             // Gallery Rendering
             const thumbsContainer = document.getElementById('product-thumbs-container');
             const mainImg = document.getElementById('main-product-image');
+            const mainFrame = document.querySelector('.gallery-main-frame');
             
-            mainImg.src = currentProduct.images[0];
-            mainImg.alt = currentProduct.name;
+            const hasGenuineImg = window.hasValidProductImage ? window.hasValidProductImage(currentProduct) : (currentProduct.images && currentProduct.images.length > 0 && !currentProduct.images[0].startsWith('http'));
             
-            let thumbsHtml = '';
-            currentProduct.images.forEach((imgUrl, idx) => {
-                thumbsHtml += `
-                    <div class="gallery-thumb-item ${idx === 0 ? 'active' : ''}" onclick="changeMainImage('${imgUrl}', this)">
-                        <img src="${imgUrl}" alt="${currentProduct.name} - ${idx + 1}">
-                    </div>
-                `;
-            });
-            thumbsContainer.innerHTML = thumbsHtml;
+            // Clean up any existing placeholder
+            const existingPlaceholder = mainFrame ? mainFrame.querySelector('.product-detail-placeholder') : null;
+            if (existingPlaceholder) existingPlaceholder.remove();
+
+            if (hasGenuineImg) {
+                if (mainImg) {
+                    mainImg.style.display = 'block';
+                    mainImg.src = currentProduct.images[0];
+                    mainImg.alt = currentProduct.name;
+                }
+                
+                let thumbsHtml = '';
+                currentProduct.images.forEach((imgUrl, idx) => {
+                    thumbsHtml += `
+                        <div class="gallery-thumb-item ${idx === 0 ? 'active' : ''}" onclick="changeMainImage('${imgUrl}', this)">
+                            <img src="${imgUrl}" alt="${currentProduct.name} - ${idx + 1}" loading="lazy">
+                        </div>
+                    `;
+                });
+                if (thumbsContainer) {
+                    thumbsContainer.innerHTML = thumbsHtml;
+                    thumbsContainer.style.display = currentProduct.images.length > 1 ? 'flex' : 'none';
+                }
+            } else {
+                if (mainImg) mainImg.style.display = 'none';
+                if (thumbsContainer) {
+                    thumbsContainer.innerHTML = '';
+                    thumbsContainer.style.display = 'none';
+                }
+                if (mainFrame) {
+                    const placeholder = document.createElement('div');
+                    placeholder.className = 'product-detail-placeholder';
+                    placeholder.innerHTML = `
+                        <div class="product-detail-placeholder-inner">
+                            <svg width="56" height="56" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="36" height="36" rx="8" fill="#f0ece6"/>
+                                <path d="M12 11V25M24 11V25M12 18H24" stroke="#c5a880" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                            <span class="product-placeholder-brand" style="font-size: 13px; margin-top: 10px;">HALLE SALATIGA</span>
+                            <h3 style="font-size: 16px; margin: 4px 0; color: var(--primary);">Koleksi Butik Offline</h3>
+                            <p style="font-size: 12.5px; color: var(--text-muted); max-width: 280px; margin: 0 auto; line-height: 1.5;">Produk ini tersedia langsung di gerai fisik Halle Salatiga. Foto produk studio akan segera diperbarui.</p>
+                        </div>
+                    `;
+                    mainFrame.appendChild(placeholder);
+                }
+            }
 
             // Color Swatches
             const colorContainer = document.getElementById('color-swatches-container');
@@ -534,16 +571,13 @@
                     : '';
 
                 const ratingStars = '★'.repeat(Math.round(product.rating)) + '☆'.repeat(5 - Math.round(product.rating));
-                const secondaryImg = product.images[1] || product.images[0];
+                const mediaHtml = window.renderProductCardMedia ? window.renderProductCardMedia(product) : '';
 
                 html += `
                     <div class="product-card">
                         <div class="product-card-img-wrapper">
                             ${saleBadge || newBadge}
-                            <a href="product.html?id=${product.id}">
-                                <img src="${product.images[0]}" alt="${product.name}" class="product-card-img" loading="lazy">
-                                <img src="${secondaryImg}" alt="${product.name}" class="product-card-img-secondary" loading="lazy">
-                            </a>
+                            ${mediaHtml}
                             <div class="product-card-actions">
                                 <a href="product.html?id=${product.id}" class="btn btn-secondary">Detail</a>
                                 <button onclick="quickAddCart(${product.id})" class="btn btn-primary">Beli</button>

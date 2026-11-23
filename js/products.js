@@ -1,5 +1,5 @@
 // Centralized product data for Halle Salatiga
-// Employs premium Unsplash imagery and realistic Indonesian fashion boutique pricing and details.
+// Features genuine Halle boutique collections (AZALIA, CRISTY, KAREENA, NAURA, VIOLA, ZINIA) and verified store inventory.
 
 const PRODUCTS = [
   {
@@ -23,10 +23,7 @@ const PRODUCTS = [
       { name: "Olive", hex: "#4E5340" }
     ],
     sizes: ["28", "30", "32", "34", "36"],
-    images: [
-      "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&w=800&q=80"
-    ],
+    images: [],
     rating: 4.8,
     reviewsCount: 128,
     stock: 12,
@@ -53,10 +50,7 @@ const PRODUCTS = [
       { name: "Desert Sand", hex: "#D2B48C" }
     ],
     sizes: ["28", "30", "32", "34"],
-    images: [
-      "https://images.unsplash.com/photo-1517423568366-8b83523034fd?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=800&q=80"
-    ],
+    images: [],
     rating: 4.7,
     reviewsCount: 84,
     stock: 5,
@@ -83,10 +77,7 @@ const PRODUCTS = [
       { name: "Heather Grey", hex: "#9E9E9E" }
     ],
     sizes: ["39", "40", "41", "42", "43", "44"],
-    images: [
-      "https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1491553895911-0055eca6402d?auto=format&fit=crop&w=800&q=80"
-    ],
+    images: [],
     rating: 4.9,
     reviewsCount: 205,
     stock: 8,
@@ -113,10 +104,7 @@ const PRODUCTS = [
       { name: "Navy Suede", hex: "#1A2536" }
     ],
     sizes: ["40", "41", "42", "43"],
-    images: [
-      "https://images.unsplash.com/photo-1533867617858-e7b97e060509?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1614252369475-531eba835eb1?auto=format&fit=crop&w=800&q=80"
-    ],
+    images: [],
     rating: 4.8,
     reviewsCount: 62,
     stock: 3,
@@ -143,10 +131,7 @@ const PRODUCTS = [
       { name: "Navy", hex: "#1D2B44" }
     ],
     sizes: ["One Size"],
-    images: [
-      "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?auto=format&fit=crop&w=800&q=80"
-    ],
+    images: [],
     rating: 4.6,
     reviewsCount: 143,
     stock: 15,
@@ -173,10 +158,7 @@ const PRODUCTS = [
       { name: "Forest Green", hex: "#2C3E2B" }
     ],
     sizes: ["One Size"],
-    images: [
-      "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?auto=format&fit=crop&w=800&q=80"
-    ],
+    images: [],
     rating: 4.8,
     reviewsCount: 92,
     stock: 7,
@@ -203,10 +185,7 @@ const PRODUCTS = [
       { name: "Classic Black", hex: "#1C1C1C" }
     ],
     sizes: ["One Size"],
-    images: [
-      "https://images.unsplash.com/photo-1627123424574-724758594e93?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?auto=format&fit=crop&w=800&q=80"
-    ],
+    images: [],
     rating: 4.9,
     reviewsCount: 178,
     stock: 9,
@@ -232,10 +211,7 @@ const PRODUCTS = [
       { name: "Matte Black", hex: "#202020" }
     ],
     sizes: ["Standard"],
-    images: [
-      "https://images.unsplash.com/photo-1508243771214-6e95d137426b?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?auto=format&fit=crop&w=800&q=80"
-    ],
+    images: [],
     rating: 4.7,
     reviewsCount: 55,
     stock: 14,
@@ -261,10 +237,7 @@ const PRODUCTS = [
       { name: "Tortoise Shell", hex: "#553B28" }
     ],
     sizes: ["One Size"],
-    images: [
-      "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=800&q=80"
-    ],
+    images: [],
     rating: 4.8,
     reviewsCount: 96,
     stock: 4,
@@ -291,10 +264,7 @@ const PRODUCTS = [
       { name: "Black Denim", hex: "#1C1D21" }
     ],
     sizes: ["29", "30", "31", "32", "33", "34"],
-    images: [
-      "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=800&q=80"
-    ],
+    images: [],
     rating: 4.8,
     reviewsCount: 142,
     stock: 15,
@@ -321,10 +291,7 @@ const PRODUCTS = [
       { name: "Soft Sage", hex: "#8F9779" }
     ],
     sizes: ["S", "M", "L", "XL"],
-    images: [
-      "https://images.unsplash.com/photo-1509551388413-e18d0ac5d495?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&w=800&q=80"
-    ],
+    images: [],
     rating: 4.6,
     reviewsCount: 59,
     stock: 8,
@@ -350,10 +317,7 @@ const PRODUCTS = [
       { name: "Stealth Black", hex: "#111111" }
     ],
     sizes: ["40", "41", "42", "43", "44"],
-    images: [
-      "https://images.unsplash.com/photo-1608256246200-53e635b5b65f?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=800&q=80"
-    ],
+    images: [],
     rating: 4.9,
     reviewsCount: 76,
     stock: 6,
@@ -380,10 +344,7 @@ const PRODUCTS = [
       { name: "Creamy Beige", hex: "#F5E6CC" }
     ],
     sizes: ["39", "40", "41", "42", "43"],
-    images: [
-      "https://images.unsplash.com/photo-1560343090-f0409e92791a?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1533867617858-e7b97e060509?auto=format&fit=crop&w=800&q=80"
-    ],
+    images: [],
     rating: 4.7,
     reviewsCount: 112,
     stock: 14,
@@ -410,10 +371,7 @@ const PRODUCTS = [
       { name: "Olive Drab", hex: "#4B5320" }
     ],
     sizes: ["One Size (30L)"],
-    images: [
-      "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?auto=format&fit=crop&w=800&q=80"
-    ],
+    images: [],
     rating: 4.8,
     reviewsCount: 65,
     stock: 9,
@@ -439,10 +397,7 @@ const PRODUCTS = [
       { name: "Dark Espresso", hex: "#2B1B17" }
     ],
     sizes: ["One Size"],
-    images: [
-      "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=800&q=80"
-    ],
+    images: [],
     rating: 4.7,
     reviewsCount: 48,
     stock: 5,
@@ -468,10 +423,7 @@ const PRODUCTS = [
       { name: "Brown Leather", hex: "#6E473B" }
     ],
     sizes: ["One Size"],
-    images: [
-      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=800&q=80"
-    ],
+    images: [],
     rating: 4.9,
     reviewsCount: 88,
     stock: 7,
@@ -498,10 +450,7 @@ const PRODUCTS = [
       { name: "Matte Black", hex: "#22252A" }
     ],
     sizes: ["Adjustable"],
-    images: [
-      "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1627124765135-5653d9354ab8?auto=format&fit=crop&w=800&q=80"
-    ],
+    images: [],
     rating: 4.8,
     reviewsCount: 120,
     stock: 22,
@@ -528,10 +477,7 @@ const PRODUCTS = [
       { name: "Taupe Beige", hex: "#B3A28F" }
     ],
     sizes: ["30", "32", "34", "36"],
-    images: [
-      "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&w=800&q=80"
-    ],
+    images: [],
     rating: 4.8,
     reviewsCount: 42,
     stock: 8,
@@ -557,10 +503,7 @@ const PRODUCTS = [
       { name: "Deep Black", hex: "#1C1C1E" }
     ],
     sizes: ["M", "L", "XL"],
-    images: [
-      "https://images.unsplash.com/photo-1551854838-212c50b4c184?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1517423568366-8b83523034fd?auto=format&fit=crop&w=800&q=80"
-    ],
+    images: [],
     rating: 4.7,
     reviewsCount: 61,
     stock: 12,
@@ -586,10 +529,7 @@ const PRODUCTS = [
       { name: "Forest Green", hex: "#2E3B30" }
     ],
     sizes: ["28", "30", "32", "34"],
-    images: [
-      "https://images.unsplash.com/photo-1582562124811-c09040d0a901?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=800&q=80"
-    ],
+    images: [],
     rating: 4.6,
     reviewsCount: 33,
     stock: 6,
@@ -615,10 +555,7 @@ const PRODUCTS = [
       { name: "Midnight Black", hex: "#1A1A1A" }
     ],
     sizes: ["40", "41", "42", "43", "44"],
-    images: [
-      "https://images.unsplash.com/photo-1525966222134-fcfa99dd8ec7?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=800&q=80"
-    ],
+    images: [],
     rating: 4.8,
     reviewsCount: 77,
     stock: 9,
@@ -644,10 +581,7 @@ const PRODUCTS = [
       { name: "Suede Charcoal", hex: "#3A3A3C" }
     ],
     sizes: ["40", "41", "42", "43"],
-    images: [
-      "https://images.unsplash.com/photo-1638247025967-b4e38f6893b4?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1608256246200-53e635b5b65f?auto=format&fit=crop&w=800&q=80"
-    ],
+    images: [],
     rating: 4.9,
     reviewsCount: 29,
     stock: 5,
@@ -673,10 +607,7 @@ const PRODUCTS = [
       { name: "Matte Black", hex: "#1C1C1C" }
     ],
     sizes: ["39", "40", "41", "42", "43"],
-    images: [
-      "https://images.unsplash.com/photo-1603487212947-7ec32637b4bb?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1560343090-f0409e92791a?auto=format&fit=crop&w=800&q=80"
-    ],
+    images: [],
     rating: 4.7,
     reviewsCount: 88,
     stock: 15,
@@ -702,10 +633,7 @@ const PRODUCTS = [
       { name: "Classic Navy", hex: "#000080" }
     ],
     sizes: ["One Size"],
-    images: [
-      "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=800&q=80"
-    ],
+    images: [],
     rating: 4.6,
     reviewsCount: 52,
     stock: 14,
@@ -732,10 +660,7 @@ const PRODUCTS = [
       { name: "Emerald Green", hex: "#097969" }
     ],
     sizes: ["One Size"],
-    images: [
-      "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?auto=format&fit=crop&w=800&q=80"
-    ],
+    images: [],
     rating: 4.8,
     reviewsCount: 41,
     stock: 6,
@@ -761,10 +686,7 @@ const PRODUCTS = [
       { name: "Stealth Black", hex: "#0A0A0A" }
     ],
     sizes: ["One Size"],
-    images: [
-      "https://images.unsplash.com/photo-1536303004784-ff58b258ba34?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?auto=format&fit=crop&w=800&q=80"
-    ],
+    images: [],
     rating: 4.5,
     reviewsCount: 95,
     stock: 20,
@@ -790,10 +712,7 @@ const PRODUCTS = [
       { name: "Classic Navy", hex: "#1A2530" }
     ],
     sizes: ["One Size"],
-    images: [
-      "https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?auto=format&fit=crop&w=800&q=80"
-    ],
+    images: [],
     rating: 4.8,
     reviewsCount: 110,
     stock: 18,
@@ -818,10 +737,7 @@ const PRODUCTS = [
       { name: "Sleek Silver", hex: "#C0C0C0" }
     ],
     sizes: ["6", "7", "8", "9"],
-    images: [
-      "https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1603561591411-07134e71a2a9?auto=format&fit=crop&w=800&q=80"
-    ],
+    images: [],
     rating: 4.7,
     reviewsCount: 46,
     stock: 10,
@@ -848,10 +764,7 @@ const PRODUCTS = [
       { name: "Off-White", hex: "#F5F5F0" }
     ],
     sizes: ["One Size Fit All"],
-    images: [
-      "https://images.unsplash.com/photo-1576871337622-98d48d4aa53e?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1601924994987-69e26d50dc26?auto=format&fit=crop&w=800&q=80"
-    ],
+    images: [],
     rating: 4.8,
     reviewsCount: 38,
     stock: 15,
@@ -877,10 +790,7 @@ const PRODUCTS = [
       { name: "Classic Black", hex: "#1C1C1C" }
     ],
     sizes: ["One Size"],
-    images: [
-      "https://images.unsplash.com/photo-1588444650733-d4c383ad566f?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?auto=format&fit=crop&w=800&q=80"
-    ],
+    images: [],
     rating: 4.8,
     reviewsCount: 22,
     stock: 25,
@@ -1141,4 +1051,58 @@ window.formatCurrency = function(amount) {
     currency: 'IDR',
     minimumFractionDigits: 0
   }).format(amount);
+};
+
+
+// Image resolution and validation helper
+window.hasValidProductImage = function(product) {
+  if (!product || !product.images || product.images.length === 0) return false;
+  const first = product.images[0];
+  if (!first || typeof first !== 'string') return false;
+  if (first.startsWith('http://') || first.startsWith('https://')) return false;
+  return true;
+};
+
+window.getProductPrimaryImage = function(product) {
+  if (window.hasValidProductImage(product)) {
+    return product.images[0];
+  }
+  return null;
+};
+
+window.getPlaceholderCardHtml = function(productId, productName) {
+  const safeTitle = (productName || 'Halle Product').replace(/"/g, '&quot;');
+  return `
+    <a href="product.html?id=${productId}" class="product-card-placeholder-link" title="${safeTitle}">
+      <div class="product-card-placeholder">
+        <div class="product-placeholder-brand-mark">
+          <svg width="34" height="34" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="36" height="36" rx="6" fill="#f0ece6"/>
+            <path d="M12 11V25M24 11V25M12 18H24" stroke="#c5a880" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <span class="product-placeholder-brand">HALLE SALATIGA</span>
+        <span class="product-placeholder-text">Koleksi Butik</span>
+        <span class="product-placeholder-sub">Tersedia di Toko Offline</span>
+      </div>
+    </a>
+  `;
+};
+
+window.renderProductCardMedia = function(product) {
+  if (window.hasValidProductImage(product)) {
+    const primaryImg = product.images[0];
+    const secondaryImg = product.images.length > 1 ? product.images[1] : '';
+    const secondaryImgHtml = secondaryImg
+      ? `<img src="${secondaryImg}" alt="${product.name}" class="product-card-img-secondary" loading="lazy" decoding="async">`
+      : '';
+    const escapedName = (product.name || '').replace(/'/g, "\\'");
+    return `
+      <a href="product.html?id=${product.id}" class="product-card-img-link">
+        <img src="${primaryImg}" alt="${product.name}" class="product-card-img" loading="lazy" decoding="async" onerror="this.onerror=null; const slot = this.closest('.product-card-media-slot') || this.parentElement; slot.outerHTML = window.getPlaceholderCardHtml(${product.id}, '${escapedName}');">
+        ${secondaryImgHtml}
+      </a>
+    `;
+  }
+  return window.getPlaceholderCardHtml(product.id, product.name);
 };

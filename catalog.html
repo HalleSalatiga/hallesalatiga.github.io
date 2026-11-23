@@ -565,17 +565,14 @@
                     : '';
 
                 const ratingStars = '★'.repeat(Math.round(product.rating)) + '☆'.repeat(5 - Math.round(product.rating));
-                const secondaryImg = product.images[1] || product.images[0];
                 const displayCategory = product.catalog || (product.category ? product.category.toUpperCase() : 'HALLE');
+                const mediaHtml = window.renderProductCardMedia ? window.renderProductCardMedia(product) : '';
 
                 html += `
                     <div class="product-card">
                         <div class="product-card-img-wrapper">
                             ${saleBadge || newBadge}
-                            <a href="product.html?id=${product.id}">
-                                <img src="${product.images[0]}" alt="${product.name}" class="product-card-img" loading="lazy">
-                                <img src="${secondaryImg}" alt="${product.name}" class="product-card-img-secondary" loading="lazy">
-                            </a>
+                            ${mediaHtml}
                             <div class="product-card-actions">
                                 <a href="product.html?id=${product.id}" class="btn btn-secondary">Detail</a>
                                 <button onclick="quickAddCart(${product.id})" class="btn btn-primary">Beli</button>

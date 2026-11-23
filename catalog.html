@@ -90,11 +90,11 @@
                     </div>
                 </div>
 
-                <!-- Category Filter -->
+                <!-- Catalog Filter -->
                 <div class="filter-group">
-                    <h3>Kategori</h3>
+                    <h3>KATALOG</h3>
                     <ul class="filter-category-list" id="filter-category-list">
-                        <!-- Dynamically populated from verified product catalog data -->
+                        <!-- Dynamically populated with verified catalogs: AZALIA, CRISTY, KAREENA, NAURA, VIOLA, ZINIA -->
                     </ul>
                 </div>
                 
@@ -128,7 +128,7 @@
                     
                     <div class="catalog-controls-right">
                         <button id="mobile-filter-btn" class="mobile-filter-btn" aria-label="Buka Filter">
-                            <i class="fa-solid fa-sliders"></i> Filter & Kategori
+                            <i class="fa-solid fa-sliders"></i> Filter & Katalog
                         </button>
                         
                         <div class="catalog-sort-wrapper">
@@ -241,9 +241,12 @@
     
     <!-- Page Specific Script -->
     <script>
+        // Catalogs list matching exact product folders
+        const CATALOG_ITEMS = ['AZALIA', 'CRISTY', 'KAREENA', 'NAURA', 'VIOLA', 'ZINIA'];
+
         // Filters state
         let currentFilters = {
-            category: 'all',
+            catalog: 'all',
             maxPrice: 500000,
             searchQuery: '',
             sortBy: 'featured'
@@ -251,14 +254,35 @@
 
         let closeMobileFilter = null;
 
+        // Resolve product's catalog from explicit field, image paths, or product title
+        function getProductCatalog(p) {
+            if (p.catalog) return p.catalog.toUpperCase();
+            if (p.images && p.images.some(img => img.toUpperCase().includes('/AZALIA/'))) return 'AZALIA';
+            if (p.images && p.images.some(img => img.toUpperCase().includes('/CRISTY/'))) return 'CRISTY';
+            if (p.images && p.images.some(img => img.toUpperCase().includes('/KAREENA/'))) return 'KAREENA';
+            if (p.images && p.images.some(img => img.toUpperCase().includes('/NAURA/'))) return 'NAURA';
+            if (p.images && p.images.some(img => img.toUpperCase().includes('/VIOLA/'))) return 'VIOLA';
+            if (p.images && p.images.some(img => img.toUpperCase().includes('/ZINIA/'))) return 'ZINIA';
+            const upperName = (p.name || '').toUpperCase();
+            for (const cat of CATALOG_ITEMS) {
+                if (upperName.includes(cat)) return cat;
+            }
+            return null;
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             // Read URL parameters
             const urlParams = new URLSearchParams(window.location.search);
-            const categoryParam = urlParams.get('category');
+            const catalogParam = urlParams.get('catalog') || urlParams.get('category');
             const searchParam = urlParams.get('search');
 
-            if (categoryParam) {
-                currentFilters.category = categoryParam.toLowerCase();
+            if (catalogParam) {
+                const matched = CATALOG_ITEMS.find(c => c.toLowerCase() === catalogParam.toLowerCase());
+                if (matched) {
+                    currentFilters.catalog = matched;
+                } else if (catalogParam.toLowerCase() === 'all') {
+                    currentFilters.catalog = 'all';
+                }
             }
 
             if (searchParam) {
@@ -276,65 +300,45 @@
             // Setup listeners
             setupEventListeners();
             
-            // Render verified categories with product counts
-            renderCategoryFilter();
+            // Render exact 6 catalogs with product counts
+            renderCatalogFilter();
 
             // Initial render
             applyFiltersAndRender();
         });
 
-        // Dynamically renders ONLY verified categories that genuinely have products (> 0)
-        function renderCategoryFilter() {
+        // Renders only the 6 verified catalogs (AZALIA, CRISTY, KAREENA, NAURA, VIOLA, ZINIA) plus Semua Produk
+        function renderCatalogFilter() {
             const listEl = document.getElementById('filter-category-list');
             if (!listEl || !window.PRODUCTS) return;
 
-            // 1. Calculate actual category counts from PRODUCTS
+            // Calculate catalog counts
             const counts = {};
+            CATALOG_ITEMS.forEach(cat => { counts[cat] = 0; });
+
             window.PRODUCTS.forEach(p => {
-                if (p.category) {
-                    const cat = p.category.toLowerCase().trim();
-                    counts[cat] = (counts[cat] || 0) + 1;
+                const cat = getProductCatalog(p);
+                if (cat && counts[cat] !== undefined) {
+                    counts[cat]++;
                 }
             });
 
-            // 2. Verified category definitions: only include categories with count > 0
-            const categoryLabels = {
-                'tas': 'Tas',
-                'celana': 'Celana',
-                'sepatu': 'Sepatu',
-                'aksesori': 'Aksesori'
-            };
-
-            const availableCategories = Object.keys(counts).filter(cat => counts[cat] > 0);
-
-            // Display order: Tas first (primary boutique collection), then Celana, Sepatu, Aksesori
-            const priorityOrder = ['tas', 'celana', 'sepatu', 'aksesori'];
-            availableCategories.sort((a, b) => {
-                const idxA = priorityOrder.indexOf(a);
-                const idxB = priorityOrder.indexOf(b);
-                if (idxA !== -1 && idxB !== -1) return idxA - idxB;
-                if (idxA !== -1) return -1;
-                if (idxB !== -1) return 1;
-                return a.localeCompare(b);
-            });
-
             const totalProducts = window.PRODUCTS.length;
-            const isAllActive = currentFilters.category === 'all';
+            const isAllActive = currentFilters.catalog === 'all';
 
             let html = `
-                <li class="filter-category-item ${isAllActive ? 'active' : ''}" data-category="all">
+                <li class="filter-category-item ${isAllActive ? 'active' : ''}" data-catalog="all">
                     <span class="category-name">Semua Produk</span>
                     <span class="category-count">${totalProducts}</span>
                 </li>
             `;
 
-            availableCategories.forEach(cat => {
-                const isActive = currentFilters.category === cat;
-                const label = categoryLabels[cat] || (cat.charAt(0).toUpperCase() + cat.slice(1));
-                const count = counts[cat];
+            CATALOG_ITEMS.forEach(cat => {
+                const isActive = currentFilters.catalog === cat;
+                const count = counts[cat] || 0;
                 html += `
-                    <li class="filter-category-item ${isActive ? 'active' : ''}" data-category="${cat}">
-                        <span class="category-name">${label}</span>
+                    <li class="filter-category-item ${isActive ? 'active' : ''}" data-catalog="${cat}">
+                        <span class="category-name">${cat}</span>
                         <span class="category-count">${count}</span>
                     </li>
                 `;
@@ -342,11 +346,11 @@
 
             listEl.innerHTML = html;
 
-            // Reattach click listeners to category items
+            // Reattach click listeners to catalog items
             listEl.querySelectorAll('.filter-category-item').forEach(item => {
                 item.addEventListener('click', () => {
-                    const selectedCat = item.getAttribute('data-category');
-                    currentFilters.category = selectedCat;
+                    const selectedCat = item.getAttribute('data-catalog');
+                    currentFilters.catalog = selectedCat;
                     
                     listEl.querySelectorAll('.filter-category-item').forEach(i => i.classList.remove('active'));
                     item.classList.add('active');
@@ -442,14 +446,14 @@
 
         function resetAllFilters() {
             currentFilters = {
-                category: 'all',
+                catalog: 'all',
                 maxPrice: 500000,
                 searchQuery: '',
                 sortBy: 'featured'
             };
 
-            // Re-render categories with 'all' active
-            renderCategoryFilter();
+            // Re-render catalogs with 'all' active
+            renderCatalogFilter();
 
             const priceSlider = document.getElementById('price-slider');
             const priceMaxDisplay = document.getElementById('price-max-display');
@@ -480,19 +484,26 @@
 
             let filtered = [...window.PRODUCTS];
 
-            // 1. Filter by category
-            if (currentFilters.category !== 'all') {
-                filtered = filtered.filter(p => p.category === currentFilters.category);
+            // 1. Filter by catalog
+            if (currentFilters.catalog !== 'all') {
+                filtered = filtered.filter(p => {
+                    const cat = getProductCatalog(p);
+                    return cat === currentFilters.catalog;
+                });
             }
 
             // 2. Filter by search query
             if (currentFilters.searchQuery) {
                 const query = currentFilters.searchQuery.toLowerCase().trim();
-                filtered = filtered.filter(p => 
-                    p.name.toLowerCase().includes(query) || 
-                    p.category.toLowerCase().includes(query) ||
-                    p.description.toLowerCase().includes(query)
-                );
+                filtered = filtered.filter(p => {
+                    const cat = getProductCatalog(p) || '';
+                    return (
+                        p.name.toLowerCase().includes(query) || 
+                        cat.toLowerCase().includes(query) ||
+                        (p.category && p.category.toLowerCase().includes(query)) ||
+                        (p.description && p.description.toLowerCase().includes(query))
+                    );
+                });
             }
 
             // 3. Filter by price
@@ -555,6 +566,7 @@
 
                 const ratingStars = '★'.repeat(Math.round(product.rating)) + '☆'.repeat(5 - Math.round(product.rating));
                 const secondaryImg = product.images[1] || product.images[0];
+                const displayCategory = product.catalog || (product.category ? product.category.toUpperCase() : 'HALLE');
 
                 html += `
                     <div class="product-card">
@@ -570,7 +582,7 @@
                             </div>
                         </div>
                         <div class="product-card-info">
-                            <span class="product-card-category">${product.category}</span>
+                            <span class="product-card-category">${displayCategory}</span>
                             <h3 class="product-card-title">
                                 <a href="product.html?id=${product.id}">${product.name}</a>
                             </h3>
@@ -597,10 +609,10 @@
             let text = '';
             if (currentFilters.searchQuery) {
                 text = `Menampilkan ${count} produk untuk pencarian "${currentFilters.searchQuery}"`;
-            } else if (currentFilters.category !== 'all') {
-                text = `Menampilkan ${count} produk dalam kategori "${currentFilters.category}"`;
+            } else if (currentFilters.catalog !== 'all') {
+                text = `Menampilkan ${count} produk dari katalog "${currentFilters.catalog}"`;
             } else {
-                text = `Menampilkan ${count} produk`;
+                text = `Menampilkan semua ${count} produk`;
             }
 
             summaryText.textContent = text;

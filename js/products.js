@@ -891,6 +891,7 @@ const PRODUCTS = [
     id: 31,
     name: "Halle Azalia Series Leather Bag",
     category: "tas",
+    catalog: "AZALIA",
     price: 289000,
     originalPrice: 389000,
     description: "Koleksi tas wanita Halle Azalia berbahan kulit asli berkualitas dengan siluet elegan dan feminin. Dilengkapi saku depan praktis, kompartemen utama beresleting aman, dan aksen kancing minimalis yang anggun.",
@@ -930,6 +931,7 @@ const PRODUCTS = [
     id: 32,
     name: "Halle Cristy Series Leather Handbag",
     category: "tas",
+    catalog: "CRISTY",
     price: 329000,
     originalPrice: 449000,
     description: "Tas handbag wanita kulit asli berkualitas tinggi dari Halle Cristy Series. Menghadirkan siluet boxy klasik bertekstur jeruk halus dengan ruang penyimpanan lega, saku belakang beresleting, dan strap bahu yang dapat dilepas pasang.",
@@ -968,6 +970,7 @@ const PRODUCTS = [
     id: 33,
     name: "Halle Kareena Unisex Leather Hand Bag",
     category: "tas",
+    catalog: "KAREENA",
     price: 249000,
     originalPrice: 339000,
     description: "Handbag dan clutch unisex berbahan kulit asli berkualitas dari Halle Kareena Series. Desain minimalis serbaguna cocok untuk pria maupun wanita dalam aktivitas formal, kantor, hingga kasual santai.",
@@ -1003,6 +1006,7 @@ const PRODUCTS = [
     id: 34,
     name: "Halle Naura Series Leather Bag",
     category: "tas",
+    catalog: "NAURA",
     price: 299000,
     originalPrice: 399000,
     description: "Tas kulit wanita Halle Naura Series dengan kombinasi warna handle yang kontras nan manis. Model flap bag berstruktur kokoh dengan kunci twist-lock modern yang anggun dan elegan.",
@@ -1039,6 +1043,7 @@ const PRODUCTS = [
     id: 35,
     name: "Halle Viola Croco Leather Bag",
     category: "tas",
+    catalog: "VIOLA",
     price: 319000,
     originalPrice: 429000,
     description: "Tas jinjing dan selempang mewah Halle Viola dengan motif croco embossed mengkilap yang memberikan kesan glamor berkelas. Memiliki kompartemen dalam teratur dengan resleting ganda untuk keamanan ekstra.",
@@ -1069,6 +1074,7 @@ const PRODUCTS = [
     id: 36,
     name: "Halle Zinia Shoulder Leather Bag",
     category: "tas",
+    catalog: "ZINIA",
     price: 279000,
     originalPrice: 369000,
     description: "Shoulder bag wanita Halle Zinia dengan aksen strap vertikal dan hardware metal pengunci kontras. Siluet minimalis nan elegan yang sangat pas disandang di bahu untuk acara kasual maupun semi-formal.",
@@ -1107,12 +1113,18 @@ const PRODUCTS = [
 
 // Helper functions for data access
 window.PRODUCTS = PRODUCTS;
+window.CATALOGS = ["AZALIA", "CRISTY", "KAREENA", "NAURA", "VIOLA", "ZINIA"];
 window.getProductById = function(id) {
   return PRODUCTS.find(p => p.id === parseInt(id));
 };
 window.getProductsByCategory = function(category) {
   if (!category || category === "all") return PRODUCTS;
   return PRODUCTS.filter(p => p.category === category);
+};
+window.getProductsByCatalog = function(catalog) {
+  if (!catalog || catalog === "all") return PRODUCTS;
+  const c = catalog.toUpperCase();
+  return PRODUCTS.filter(p => (p.catalog && p.catalog.toUpperCase() === c));
 };
 window.searchProducts = function(query) {
   if (!query) return PRODUCTS;
